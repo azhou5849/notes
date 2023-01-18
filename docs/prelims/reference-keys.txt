@@ -1,8 +1,8 @@
 fig:nice-fig
 tab:nice-tab
 eq:binom
-hello-bookdown
-a-section
+quadratic-equations
+finding-roots-by-factoring
 cross
 chapters-and-sub-chapters
 captioned-figures-and-tables
