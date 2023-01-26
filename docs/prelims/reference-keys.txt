@@ -1,8 +1,10 @@
 fig:nice-fig
 tab:nice-tab
 eq:binom
-quadratic-equations
+quadratics
 finding-roots-by-factoring
+factoring-quadratics-which-are-not-monic
+useful-factorisations
 cross
 chapters-and-sub-chapters
 captioned-figures-and-tables

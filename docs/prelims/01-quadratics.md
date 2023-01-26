@@ -1,6 +1,49 @@
-# Quadratic Equations
+# Quadratics
 
-A **quadratic expression** (in one variable $x$) is any expression that can be written in the form $ax^2 + bx + c$, where $a, b, c$ are numbers and $a\neq 0$. A *root* of a quadratic expression in $x$ is a value of $x$ for which the expression evaluates to $0$. That is, a root of $ax^2 + bx + c$ is a solution to the equation
+A **quadratic expression** (in one variable $x$) is any expression that can be written in the form $ax^2 + bx + c$, where $a, b, c$ are numbers and $a\neq 0$. A **root** of $ax^2 + bx + c$ is a value of $x$ for which the expression evaluates to $0$. That is, a root of $ax^2 + bx + c$ is a solution to the equation
 $$ax^2 + bx + c = 0.$$
 
 ## Finding roots by factoring
+
+In some cases, a quadratic factors nicely as the product of two linear expressions (and perhaps a constant), in which case the roots can be found by looking at each linear factor individually.
+
+> **Example:** $x^2 - 7x + 12$ factors as $(x - 3)(x - 4)$. Therefore, $x^2 - 7x + 12 = 0$ if and only if $x - 3 = 0$ or $x - 4 = 0$, so the roots are $3$ and $4$.
+
+> **Example:** $x^2 + 6x + 9$ factors as $(x + 3)^2$, so the only root is $-3$.
+
+> **Example:** $10x^2 + 17x + 3$ factors as $(2x + 3)(5x + 1)$, so $10x^2 + 17x + 3 = 0$ if and only if $2x + 3 = 0$ or $5x + 1 = 0$. The roots are thus $-3/2$ and $-1/5$.
+
+Conversely, if we know that a number $r$ is a root of a quadratic, then $x - r$ must be a factor.
+
+> **Example:** One of the roots of $6x^2 - 5x - 1$ is $1$, so $x - 1$ is a factor. Choosing coefficients in the other factor to match the quadratic term $6x^2$ and the constant term $-1$, we see that $6x^2 - 5x - 1$ factors as $(x - 1)(6x + 1)$. The other root is $-1/6$.
+
+The **multiplicity** of a root $r$ is the number of times that $x - r$ appears as a factor.
+
+> **Example:** In $x^2 - 7x + 12 = (x - 3)(x - 4)$, the roots $3$ and $4$ each have multiplicity $1$. On the other hand, in $x^2 + 6x + 9 = (x + 3)^2$, the lone root $-3$ has multiplicity $2$.
+
+### Factoring quadratics which are not monic
+
+A quadratic is **monic** if the leading coefficient, i.e. the coefficient of $x^2$, is $1$. These are generally easier to factor (when a nice factorisation exists), as we only have to decide the constant terms of the linear factors. For non-monic quadratics, the following result is helpful.
+
+> **Proposition:** The roots of $x^2 + bx + ac$ are $a$ times the roots of $ax^2 + bx + c$.
+>
+> *Proof:* Let $r$ be a root of $ax^2 + bx + c$, so $ar^2 + br + c = 0$. Then
+> $$(ar)^2 + b(ar) + ac = a(ar^2 + br + c) = a\cdot 0 = 0,$$
+> so $ar$ is a root of $x^2 + bx + ac$. Conversely, if $s$ is a root of $x^2 + bx + ac$, then
+> $$a(s/a)^2 + b(s/a) + c = (1/a)(s^2 + bs + ac) = (1/a)\cdot 0 = 0,$$
+> so $s/a$ is a root of $ax^2 + bx + c$.
+
+> **Corollary:** If $x^2 + bx + ac = (x - r)(x - s)$, then $ax^2 + bx + c = a(x - r/a)(x - s/a)$.
+
+> **Example:** Returning to our earlier example $10x^2 + 17x + 3$, by the Proposition, we can start by factoring $x^2 + 17x + 30 = (x + 2)(x + 15)$. Then
+> $$10x^2 + 17x + 3 = 10\left(x + \frac{2}{10}\right)\left(x + \frac{15}{10}\right) = (5x + 1)(2x + 3),$$
+> as we claimed before.
+
+### Useful factorisations
+
+There are a few factorisations that are useful to either recognise or create:
+$$\begin{aligned}
+x^2 - a^2 &= (x - a)(x + a) \\
+x^2 + 2ax + a^2 &= (x + a)^2 \\
+x^2 - 2ax + a^2 &= (x - a)^2.
+\end{aligned}$$

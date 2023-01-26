@@ -17,7 +17,7 @@ csl: chicago-fullnote-bibliography.csl
 
 # About {-}
 
-Review of some topics from high school mathematics (or catch-up, if the reader has not been exposed to said topics) that are frequently unpolished amongst students going into undergraduate studies.
+Review of some topics from high school mathematics (or catch-up, if the reader has not been exposed to said topics).
 
 
 ```{r include=FALSE}
