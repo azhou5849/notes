@@ -1,45 +1,22 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{docpreamble}[2019/09/23 Preamble for various documents]
+\ProvidesPackage{docpreamble}[2024-01-20 Preamble for notes documents]
 
 
 %% Packages %%
-\RequirePackage{amsfonts,amssymb,amsthm,mathrsfs,stmaryrd,listings}
-\RequirePackage{amsmath,braket,cancel,centernot,tensor} %tikz-cd if the library option does not work
-\RequirePackage{chngcntr} % used below to change the numbering of equations
-\RequirePackage{enumitem}
-\RequirePackage{multirow}
-\RequirePackage{fancyhdr,titlesec}
-\RequirePackage{float,graphicx,tikz,subcaption}\usetikzlibrary{arrows.meta, cd, decorations.markings}
-\RequirePackage{xcolor}
-\RequirePackage[letterpaper]{geometry}
-\RequirePackage[colorlinks, linkcolor=blue, urlcolor=purple, citecolor=blue]{hyperref}
-% removed but may be needed: tabularx, multirow, multicol
+\RequirePackage{fancyhdr,titlesec}   % page and section formatting
+\RequirePackage{}   % symbols and math packages (mathtools?)
 
 
-%% Section Formatting %%
-\DeclareOption{notes}{
-    \titleformat{\section}{\Large\bfseries\center}{\thesection}{1em}{}
-    \titleformat{\subsection}{\center\bfseries}{\thesubsection}{1em}{}
-}
-\DeclareOption{problems}{
-    \titleformat{\section}{\Large\bfseries\center\uppercase}{}{0em}{}
-    \titleformat{\subsection}{\center\uppercase}{}{0em}{}
-}
-\DeclareOption*{\PackageWarning{docpreamble}{Unknown `\CurrentOption'}}
-\ProcessOptions\relax
+%% Document Formatting %%
 
+% Change section mark for header %
+\renewcommand{\sectionmark}[1]{\markright{#1}}
 
-%% Section Marks for Headers %%
-\renewcommand{\sectionmark}[1]{\markright{#1}} % this may become conditional later, in which case it should be included above
+% Section and subsection titles %
+\titleformat{\section}{\Large\bfseries\center}{\thesection}{1em}{}
+\titleformat{\subsection}{\center\bfseries}{\thesubsection}{1em}{}
 
-
-%% Spacing  %%
-\setlength\parindent{0pt}
-\setlength\parskip{3pt plus 1pt minus 1pt}
-\renewcommand{\arraystretch}{1.2}
-
-
-%% New Sections Start at Odd Pages %%
+% Defines \cleardoublepage to force new sections to start at odd pages %
 \makeatletter
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
     \hbox{}
@@ -47,6 +24,36 @@
     \newpage
     \if@twocolumn\hbox{}\newpage\fi\fi\fi}
 \makeatother \clearpage{\pagestyle{empty}\cleardoublepage}
+
+% Spacing  %
+\setlength\parindent{0pt}
+\setlength\parskip{3pt plus 1pt minus 1pt}
+\renewcommand{\arraystretch}{1.2}
+
+
+%% Math Formatting %%
+
+
+
+
+
+
+
+
+
+
+%% Packages %%
+\RequirePackage{amsfonts,amssymb,amsthm,mathrsfs,stmaryrd,listings}
+\RequirePackage{amsmath,braket,cancel,centernot,tensor} %tikz-cd if the library option does not work
+\RequirePackage{chngcntr} % used below to change the numbering of equations
+\RequirePackage{enumitem}
+% \RequirePackage{multirow}  used in past but unclear if currently needed
+\RequirePackage{float,graphicx,tikz,subcaption}\usetikzlibrary{arrows.meta, cd, decorations.markings}
+\RequirePackage{xcolor}
+\RequirePackage[letterpaper]{geometry}
+\RequirePackage[colorlinks, linkcolor=blue, urlcolor=purple, citecolor=blue]{hyperref}
+% removed but may be needed: tabularx, multirow, multicol
+
 
 
 %% Equation Numbering %%
