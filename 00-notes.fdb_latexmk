@@ -1,9 +1,9 @@
 # Fdb version 4
-["pdflatex"] 1706139220.07724 "c:/Users/azhou/Documents/GitHub/notes/00-notes.tex" "00-notes.pdf" "00-notes" 1706139223.45496 0
-  "00-notes.aux" 1706139222 405 dad1bdec54015726b5afdc99a44c0e19 "pdflatex"
-  "00-notes.out" 1706139223 307 ad802fafe15b7f89a46fd5f11e81bb22 "pdflatex"
-  "00-notes.tex" 1706139206 392 1efcc9aeafd53e76f5a7d2f4af2cdef1 ""
-  "00-notes.toc" 1706139223 161 19165d5701eab990ae55b12e42e2996c "pdflatex"
+["pdflatex"] 1706147292.96864 "c:/Users/azhou/Documents/GitHub/notes/00-notes.tex" "00-notes.pdf" "00-notes" 1706147299.09218 0
+  "00-notes.aux" 1706147297 405 dad1bdec54015726b5afdc99a44c0e19 "pdflatex"
+  "00-notes.out" 1706147297 307 ad802fafe15b7f89a46fd5f11e81bb22 "pdflatex"
+  "00-notes.tex" 1706147295 394 1b77701d9683a7364c0eedb3cb4c99f0 ""
+  "00-notes.toc" 1706147297 161 19165d5701eab990ae55b12e42e2996c "pdflatex"
   "C:/Users/azhou/AppData/Local/MiKTeX/2.9/fonts/map/pdftex/pdftex.map" 1706138844 160108 064c28284bda3e66a3f323e838577e13 ""
   "C:/Users/azhou/AppData/Local/MiKTeX/2.9/fonts/tfm/public/rsfs/rsfs10.tfm" 1586627113 688 37338d6ab346c2f1466b29e195316aa4 ""
   "C:/Users/azhou/AppData/Local/MiKTeX/2.9/fonts/tfm/public/rsfs/rsfs5.tfm" 1586627115 684 3a51bd4fd9600428d5264cf25f04bb9a ""
@@ -174,7 +174,7 @@
   "C:/Users/azhou/AppData/Local/Programs/MiKTeX 2.9/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/azhou/AppData/Local/Programs/MiKTeX 2.9/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "C:/Users/azhou/Dropbox/Math/texmf/tex/latex/docpreamble/docpreamble.sty" 1611524741 7267 822e5575f987b7f737cec58acec2b5f2 ""
-  "c:/Users/azhou/Documents/GitHub/notes/00-notes.tex" 1706139206 392 1efcc9aeafd53e76f5a7d2f4af2cdef1 ""
+  "c:/Users/azhou/Documents/GitHub/notes/00-notes.tex" 1706147295 394 1b77701d9683a7364c0eedb3cb4c99f0 ""
   (generated)
   "00-notes.aux"
   "00-notes.log"
