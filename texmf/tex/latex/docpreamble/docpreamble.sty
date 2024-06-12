@@ -4,7 +4,14 @@
 
 %% Packages %%
 \RequirePackage{fancyhdr,titlesec}   % page and section formatting
-\RequirePackage{}   % symbols and math packages (mathtools?)
+\RequirePackage{mathtools,amssymb,amsthm}   % math-related packages
+\RequirePackage{chngcntr}  % equation numbering
+\RequirePackage{float,graphicx,tikz,subcaption}  % graphics packages
+  \usetikzlibrary{arrows.meta, cd, decorations.markings}  % commutative diagrams with tikzcd
+\RequirePackage{enumitem}  % list formatting
+\RequirePackage{xcolor}  % colors
+\RequirePackage[letterpaper]{geometry}  % page margins
+\RequirePackage[colorlinks, linkcolor=blue, urlcolor=purple, citecolor=blue]{hyperref}  % links
 
 
 %% Document Formatting %%
@@ -33,197 +40,183 @@
 
 %% Math Formatting %%
 
-
-
-
-
-
-
-
-
-
-%% Packages %%
-\RequirePackage{amsfonts,amssymb,amsthm,mathrsfs,stmaryrd,listings}
-\RequirePackage{amsmath,braket,cancel,centernot,tensor} %tikz-cd if the library option does not work
-\RequirePackage{chngcntr} % used below to change the numbering of equations
-\RequirePackage{enumitem}
-% \RequirePackage{multirow}  used in past but unclear if currently needed
-\RequirePackage{float,graphicx,tikz,subcaption}\usetikzlibrary{arrows.meta, cd, decorations.markings}
-\RequirePackage{xcolor}
-\RequirePackage[letterpaper]{geometry}
-\RequirePackage[colorlinks, linkcolor=blue, urlcolor=purple, citecolor=blue]{hyperref}
-% removed but may be needed: tabularx, multirow, multicol
-
-
-
-%% Equation Numbering %%
+% Equation numbering %
 \numberwithin{equation}{section}
 
-
-%% Theorems
-
+% Theorem environments %
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{cor}[thm]{Corollary}
-\newtheorem*{axiom}{Axiom}
+% \newtheorem*{axiom}{Axiom}
+
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
 \newtheorem{example}[thm]{Example}
-\newtheorem{exercise}{Exercise}
-\newtheorem{fact}[thm]{Fact}
-\newtheorem*{problem}{Problem}
-\newtheorem*{remark}{Remark}
-\newtheorem*{remarks}{Remarks}
+% \newtheorem{exercise}{Exercise}
+% \newtheorem{fact}[thm]{Fact}
+% \newtheorem*{problem}{Problem}
+% \newtheorem*{remark}{Remark}
+% \newtheorem*{remarks}{Remarks}
 
-
-%% Bold Math Symbols %%
-\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
-
-
-%% New Math Commands
-\newcommand{\category}[1]{\operatorname{\mathbf{#1}}}
-\newcommand{\gsim}{\gtrsim}
-\newcommand{\lsim}{\lesssim}
-\newcommand{\notimplies}{\centernot\implies}
-\newcommand{\unit}[1]{\hat{\mathbf{#1}}}
-
+% Redefined commands and environments %
 \renewcommand{\bar}{\overline}
 \renewcommand{\hat}{\widehat}
 \renewcommand{\Im}{\operatorname{Im}}
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\vec}{\mathbf}
 
-\DeclareMathOperator{\acc}{acc}
-\DeclareMathOperator{\adj}{adj}
-\DeclareMathOperator{\alg}{alg}
-\DeclareMathOperator{\AM}{AM}
-\DeclareMathOperator{\ann}{ann}
-\DeclareMathOperator{\arccot}{arccot}
-\DeclareMathOperator{\arcsec}{arcsec}
-\DeclareMathOperator{\arcsinh}{arcsinh}
-\DeclareMathOperator{\arctanh}{arctanh}
-\DeclareMathOperator{\area}{area}
-\DeclareMathOperator{\Arg}{Arg}
-\DeclareMathOperator{\Arr}{Arr}
-\DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\Bil}{Bil}
-\DeclareMathOperator{\Bord}{Bord}
-\DeclareMathOperator{\Br}{Br}
-\DeclareMathOperator{\card}{card}
-\DeclareMathOperator{\cd}{cd}
-\DeclareMathOperator{\Ch}{Ch}
-\DeclareMathOperator{\CH}{CH}
-\DeclareMathOperator{\Char}{char}
-\DeclareMathOperator{\Cl}{Cl}
-\DeclareMathOperator{\codim}{codim}
-\DeclareMathOperator{\coker}{coker}
-\DeclareMathOperator{\colim}{colim}
-\DeclareMathOperator{\cone}{cone}
-\DeclareMathOperator{\Conf}{Conf}
-\DeclareMathOperator{\conmod}{mod}
-\DeclareMathOperator{\cont}{cont}
-\DeclareMathOperator{\curl}{curl}
-\DeclareMathOperator{\diag}{diag}
-\DeclareMathOperator{\diam}{diam}
-\DeclareMathOperator{\Diff}{Diff}
-\DeclareMathOperator{\disc}{disc}
-\DeclareMathOperator{\dist}{dist}
-\DeclareMathOperator{\Div}{Div}
-\DeclareMathOperator{\divhom}{div}
-\DeclareMathOperator{\dom}{dom}
-\DeclareMathOperator{\ED}{ED}
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\esssup}{ess\,sup}
-\DeclareMathOperator{\ev}{ev}
-\DeclareMathOperator{\Ext}{Ext}
-\DeclareMathOperator{\Forget}{Forget}
-\DeclareMathOperator{\Frac}{Frac}
-\DeclareMathOperator{\fracpart}{frac}
-\DeclareMathOperator{\Free}{Free}
-\DeclareMathOperator{\Frob}{Frob}
-\DeclareMathOperator{\Gal}{Gal}
-\DeclareMathOperator{\Gr}{Gr}
-\DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\graph}{graph}
-\DeclareMathOperator{\Hess}{Hess}
-\DeclareMathOperator{\hol}{hol}
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\id}{id}
-\DeclareMathOperator{\IF}{IF}
-\DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\ind}{ind}
-\DeclareMathOperator{\Inj}{Inj}
-\DeclareMathOperator{\Inn}{Inn}
-\DeclareMathOperator{\Int}{Int}
-\DeclareMathOperator{\irr}{irr}
-\DeclareMathOperator{\Iso}{Iso}
-\DeclareMathOperator{\Jac}{Jac}
-\DeclareMathOperator{\Kos}{Kos}
-\DeclareMathOperator{\lcm}{lcm}
-\DeclareMathOperator{\length}{length}
-\DeclareMathOperator{\Li}{Li}
-\DeclareMathOperator{\loc}{loc}
-\DeclareMathOperator{\Log}{Log}
-\DeclareMathOperator{\Mat}{Mat}
-\DeclareMathOperator{\Max}{Max}
-\DeclareMathOperator{\MCG}{MCG}
-\DeclareMathOperator{\Mod}{Mod}
-\DeclareMathOperator{\Mor}{Mor}
-\DeclareMathOperator{\Nat}{Nat}
-\DeclareMathOperator{\new}{new}
-\DeclareMathOperator{\Nil}{Nil}
-\DeclareMathOperator{\norm}{norm}
-\DeclareMathOperator{\Ob}{Ob}
-\DeclareMathOperator{\old}{old}
-\DeclareMathOperator{\op}{op}
-\DeclareMathOperator{\Or}{Or}
-\DeclareMathOperator{\orb}{orb}
-\DeclareMathOperator{\ord}{ord}
-\DeclareMathOperator{\osc}{osc}
-\DeclareMathOperator{\pfrac}{PFrac}
-\DeclareMathOperator{\Pic}{Pic}
-\DeclareMathOperator{\Pre}{Pre}
-\DeclareMathOperator{\pre}{pre}
-\DeclareMathOperator{\Proj}{Proj}
-\DeclareMathOperator{\proj}{proj}
-\DeclareMathOperator{\PV}{PV}
-\DeclareMathOperator{\rad}{rad}
-\DeclareMathOperator{\range}{range}
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\RCF}{RCF}
-\DeclareMathOperator{\reg}{reg}
-\DeclareMathOperator{\Rep}{Rep}
-\DeclareMathOperator{\res}{res}
-\DeclareMathOperator{\Res}{Res}
-\DeclareMathOperator{\rot}{rot}
-\DeclareMathOperator{\sech}{sech}
-\DeclareMathOperator{\sgn}{sgn}
-\DeclareMathOperator{\sh}{sh}
-\DeclareMathOperator{\Sh}{Sh}
-\DeclareMathOperator{\Sk}{Sk}
-\DeclareMathOperator{\Span}{span}
-\DeclareMathOperator{\Spec}{Spec}
-\DeclareMathOperator{\stab}{stab}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\Syl}{Syl}
-\DeclareMathOperator{\Tor}{Tor}
-\DeclareMathOperator{\tors}{tors}
-\DeclareMathOperator{\Tot}{Tot}
-\DeclareMathOperator{\Tr}{Tr}
-\DeclareMathOperator{\tr}{tr}
-\DeclareMathOperator{\type}{type}
-\DeclareMathOperator{\uni}{uni}
-\DeclareMathOperator{\Vect}{Vect}
-\DeclareMathOperator{\vol}{vol}
 
-\def\Xint#1{\mathchoice
-   {\XXint\displaystyle\textstyle{#1}}%
-   {\XXint\textstyle\scriptstyle{#1}}%
-   {\XXint\scriptstyle\scriptscriptstyle{#1}}%
-   {\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
-   \!\int}
-\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$}
-     \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
-\def\ddashint{\Xint=}
-\def\dashint{\Xint-}
+
+%% Packages %%
+% \RequirePackage{mathrsfs,stmaryrd,listings}
+% \RequirePackage{braket,cancel,centernot,tensor} %tikz-cd if the library option does not work
+% \RequirePackage{multirow}  used in past but unclear if currently needed
+% removed but may be needed: tabularx, multirow, multicol
+
+
+
+%% Bold Math Symbols %%
+% \SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
+
+
+%% New Math Commands
+% \newcommand{\category}[1]{\operatorname{\mathbf{#1}}}
+% \newcommand{\gsim}{\gtrsim}
+% \newcommand{\lsim}{\lesssim}
+% \newcommand{\notimplies}{\centernot\implies}
+% \newcommand{\unit}[1]{\hat{\mathbf{#1}}}
+
+% \DeclareMathOperator{\acc}{acc}
+% \DeclareMathOperator{\adj}{adj}
+% \DeclareMathOperator{\alg}{alg}
+% \DeclareMathOperator{\AM}{AM}
+% \DeclareMathOperator{\ann}{ann}
+% \DeclareMathOperator{\arccot}{arccot}
+% \DeclareMathOperator{\arcsec}{arcsec}
+% \DeclareMathOperator{\arcsinh}{arcsinh}
+% \DeclareMathOperator{\arctanh}{arctanh}
+% \DeclareMathOperator{\area}{area}
+% \DeclareMathOperator{\Arg}{Arg}
+% \DeclareMathOperator{\Arr}{Arr}
+% \DeclareMathOperator{\Aut}{Aut}
+% \DeclareMathOperator{\Bil}{Bil}
+% \DeclareMathOperator{\Bord}{Bord}
+% \DeclareMathOperator{\Br}{Br}
+% \DeclareMathOperator{\card}{card}
+% \DeclareMathOperator{\cd}{cd}
+% \DeclareMathOperator{\Ch}{Ch}
+% \DeclareMathOperator{\CH}{CH}
+% \DeclareMathOperator{\Char}{char}
+% \DeclareMathOperator{\Cl}{Cl}
+% \DeclareMathOperator{\codim}{codim}
+% \DeclareMathOperator{\coker}{coker}
+% \DeclareMathOperator{\colim}{colim}
+% \DeclareMathOperator{\cone}{cone}
+% \DeclareMathOperator{\Conf}{Conf}
+% \DeclareMathOperator{\conmod}{mod}
+% \DeclareMathOperator{\cont}{cont}
+% \DeclareMathOperator{\curl}{curl}
+% \DeclareMathOperator{\diag}{diag}
+% \DeclareMathOperator{\diam}{diam}
+% \DeclareMathOperator{\Diff}{Diff}
+% \DeclareMathOperator{\disc}{disc}
+% \DeclareMathOperator{\dist}{dist}
+% \DeclareMathOperator{\Div}{Div}
+% \DeclareMathOperator{\divhom}{div}
+% \DeclareMathOperator{\dom}{dom}
+% \DeclareMathOperator{\ED}{ED}
+% \DeclareMathOperator{\End}{End}
+% \DeclareMathOperator{\esssup}{ess\,sup}
+% \DeclareMathOperator{\ev}{ev}
+% \DeclareMathOperator{\Ext}{Ext}
+% \DeclareMathOperator{\Forget}{Forget}
+% \DeclareMathOperator{\Frac}{Frac}
+% \DeclareMathOperator{\fracpart}{frac}
+% \DeclareMathOperator{\Free}{Free}
+% \DeclareMathOperator{\Frob}{Frob}
+% \DeclareMathOperator{\Gal}{Gal}
+% \DeclareMathOperator{\Gr}{Gr}
+% \DeclareMathOperator{\grad}{grad}
+% \DeclareMathOperator{\graph}{graph}
+% \DeclareMathOperator{\Hess}{Hess}
+% \DeclareMathOperator{\hol}{hol}
+% \DeclareMathOperator{\Hom}{Hom}
+% \DeclareMathOperator{\id}{id}
+% \DeclareMathOperator{\IF}{IF}
+% \DeclareMathOperator{\im}{im}
+% \DeclareMathOperator{\ind}{ind}
+% \DeclareMathOperator{\Inj}{Inj}
+% \DeclareMathOperator{\Inn}{Inn}
+% \DeclareMathOperator{\Int}{Int}
+% \DeclareMathOperator{\irr}{irr}
+% \DeclareMathOperator{\Iso}{Iso}
+% \DeclareMathOperator{\Jac}{Jac}
+% \DeclareMathOperator{\Kos}{Kos}
+% \DeclareMathOperator{\lcm}{lcm}
+% \DeclareMathOperator{\length}{length}
+% \DeclareMathOperator{\Li}{Li}
+% \DeclareMathOperator{\loc}{loc}
+% \DeclareMathOperator{\Log}{Log}
+% \DeclareMathOperator{\Mat}{Mat}
+% \DeclareMathOperator{\Max}{Max}
+% \DeclareMathOperator{\MCG}{MCG}
+% \DeclareMathOperator{\Mod}{Mod}
+% \DeclareMathOperator{\Mor}{Mor}
+% \DeclareMathOperator{\Nat}{Nat}
+% \DeclareMathOperator{\new}{new}
+% \DeclareMathOperator{\Nil}{Nil}
+% \DeclareMathOperator{\norm}{norm}
+% \DeclareMathOperator{\Ob}{Ob}
+% \DeclareMathOperator{\old}{old}
+% \DeclareMathOperator{\op}{op}
+% \DeclareMathOperator{\Or}{Or}
+% \DeclareMathOperator{\orb}{orb}
+% \DeclareMathOperator{\ord}{ord}
+% \DeclareMathOperator{\osc}{osc}
+% \DeclareMathOperator{\pfrac}{PFrac}
+% \DeclareMathOperator{\Pic}{Pic}
+% \DeclareMathOperator{\Pre}{Pre}
+% \DeclareMathOperator{\pre}{pre}
+% \DeclareMathOperator{\Proj}{Proj}
+% \DeclareMathOperator{\proj}{proj}
+% \DeclareMathOperator{\PV}{PV}
+% \DeclareMathOperator{\rad}{rad}
+% \DeclareMathOperator{\range}{range}
+% \DeclareMathOperator{\rank}{rank}
+% \DeclareMathOperator{\RCF}{RCF}
+% \DeclareMathOperator{\reg}{reg}
+% \DeclareMathOperator{\Rep}{Rep}
+% \DeclareMathOperator{\res}{res}
+% \DeclareMathOperator{\Res}{Res}
+% \DeclareMathOperator{\rot}{rot}
+% \DeclareMathOperator{\sech}{sech}
+% \DeclareMathOperator{\sgn}{sgn}
+% \DeclareMathOperator{\sh}{sh}
+% \DeclareMathOperator{\Sh}{Sh}
+% \DeclareMathOperator{\Sk}{Sk}
+% \DeclareMathOperator{\Span}{span}
+% \DeclareMathOperator{\Spec}{Spec}
+% \DeclareMathOperator{\stab}{stab}
+% \DeclareMathOperator{\supp}{supp}
+% \DeclareMathOperator{\Syl}{Syl}
+% \DeclareMathOperator{\Tor}{Tor}
+% \DeclareMathOperator{\tors}{tors}
+% \DeclareMathOperator{\Tot}{Tot}
+% \DeclareMathOperator{\Tr}{Tr}
+% \DeclareMathOperator{\tr}{tr}
+% \DeclareMathOperator{\type}{type}
+% \DeclareMathOperator{\uni}{uni}
+% \DeclareMathOperator{\Vect}{Vect}
+% \DeclareMathOperator{\vol}{vol}
+
+% \def\Xint#1{\mathchoice
+% {\XXint\displaystyle\textstyle{#1}}%
+% {\XXint\textstyle\scriptstyle{#1}}%
+% {\XXint\scriptstyle\scriptscriptstyle{#1}}%
+% {\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+% \!\int}
+% \def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$}
+%     \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
+% \def\ddashint{\Xint=}
+% \def\dashint{\Xint-}
