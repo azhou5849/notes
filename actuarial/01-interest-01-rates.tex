@@ -1,0 +1,57 @@
+\subsection{Compound interest and rates}
+
+\begin{defn}[Accumulation functions]
+The \emph{accumulation (amount) function} $A(t)$ is the value of an investment $P = A(0)$ at time $t$. The \emph{accumulation (factor) function} $a(t)$ is the value at time $t$ of an initial investment of 1,
+\begin{equation}
+A(t) = A(0)a(t)\quad\longleftrightarrow\quad a(t) = \frac{A(t)}{A(0)}.
+\end{equation}
+\end{defn}
+
+\begin{example}
+If an annual interest rate $i$ is fixed, then after $n$ whole years,
+\begin{equation}
+a(n) = (1 + i)^n\quad\text{and}\quad A(n) = P(1 + i)^n,
+\end{equation}
+where $P = A(0)$ is the principal investment.
+\end{example}
+
+In practice, we often use a smaller compounding period, such as a quarter, month, or day. It is often helpful to be able to convert to another compounding period.
+
+\begin{defn}[Equivalence of rates]
+Two interest rates are \emph{equivalent} if their accumulation functions are equal at any time for which a whole number of compounding periods have taken place for both rates. For a given interest rate, the \emph{effective (annual) interest rate} is the equivalent annual interest rate:
+\begin{equation}
+1 + i_{\text{eff}} = a(1)\implies i_{\text{eff}} = a(1) - 1,
+\end{equation}
+where $a(1)$ is calculated using the given interest rate.
+\end{defn}
+
+\begin{example}
+A quarterly interest rate of $3\%$ yields an effective annual interest rate
+\begin{equation}
+i_{\text{eff}} = (1.03)^4 - 1\approx 12.55\%.
+\end{equation}
+\end{example}
+
+Carrying out the same calculation, the effective annual interest rate for a rate $r$ compounded $m$ times a year (at evenly spaced time intervals) is
+\begin{equation}
+i_{\text{eff}} = (1 + r)^m - 1.
+\end{equation}
+
+\begin{defn}[Nominal annual interest rate]
+Given an interest rate $r$ compounded $m$ times a year, the \emph{nominal annual interest rate} is $mr$. When $m = 12$, so that compounding is monthly, $r$ is the \emph{periodic rate} and the nominal annual interest rate is the \emph{annual percentage rate (APR)}.
+\end{defn}
+
+We denote by $i^{(m)}$ the nominal annual interest rate for which compounding $m$ times a year yields an effective annual interest rate of $i$. Thus
+\begin{equation}
+i = \left(1 + \frac{i^{(m)}}{m}\right)^m - 1\implies i^{(m)} = m[(1 + i)^{1/m} - 1].
+\end{equation}
+In the limit $m\to\infty$ of \emph{continuous compounding}, we obtain the \emph{force of interest}
+\begin{equation}
+\begin{split}
+\delta &= \lim_{m\to\infty} i^{(m)} \\
+&= \lim_{m\to\infty} m[(1 + i)^{1/m} - 1] \\
+&= \lim_{t\to 0}\frac{(1 + i)^t - 1}{t} \\
+&= \frac{d}{dt}(1 + i)^t\text{ at }t = 0 \\
+&= \ln(1 + i).
+\end{split}
+\end{equation}
