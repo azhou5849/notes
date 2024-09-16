@@ -1,0 +1,96 @@
+\section{Complex Numbers}
+
+\subsection{Extending the real numbers}
+
+The real numbers have the property that the square of any real number is non-negative (and the only square which is not positive is $0^2 = 0$). We introduce a new ``number'' $i$, called an \emph{imaginary unit} which satisfies the equation $i^2 = -1$.
+
+Adding and multiplying with real numbers produces more numbers of the form $x + yi$, where $x$ and $y$ are real. These are called \emph{complex numbers}. Complex numbers where $y = 0$ are just real numbers $x = x + 0i$, so every real number is also a complex number. Complex numbers where $x = 0$, such as $i = 0 + 1i$ and $-3i = 0 + (-3)i$, are called \emph{purely imaginary}. (The number $0 = 0 + 0i$ is both real and purely imaginary.)
+
+Given a complex number $z = x + yi$, we call $x$ the \emph{real part} of $z$ and $y$ the \emph{imaginary part} of $z$. (Careful: the imaginary part is $y$, not $yi$!) These are denoted $\Re z$ and $\Im z$, respectively.
+
+Two complex numbers are equal when their real parts are equal and their imaginary parts are equal.
+
+
+\subsection{Arithmetic}
+
+Adding and subtracting complex numbers is straightforward:
+\begin{align}
+(1 + 2i) + (4 - i) &= (1 + 4) + (2i - i) = 5 + i, \\
+(1 + 2i) - (4 - i) &= (1 - 4) + (2i - (-i)) = -3 + 3i.
+\end{align}
+When multiplying, we distribute and use the defining property that $i^2 = -1$:
+\begin{align}
+(1 + 2i)(4 - i) &= 1(4 - i) + 2i(4 - i) \\
+&= 4 - i + 8i - 2i^2 \\
+&= 4 + 7i - 2(-1) \\
+&= 6 + 7i. 
+\end{align}
+For division, the trick is to write it as a fraction and multiply the numerator and denominator by a value that makes the denominator real:
+\begin{align}
+\frac{1 + 2i}{4 - i} &= \frac{(1 + 2i)(4 + i)}{(4 - i)(4 + i)} \\
+&= \frac{4 + i + 8i + 2i^2}{16 + 4i - 4i - i^2} \\
+&= \frac{4 + 9i - 2}{16 - (-1)} \\
+&= \frac{2 + 9i}{17} \\
+&= \frac{2}{17} + \frac{9}{17}i.
+\end{align}
+The same basic algebraic rules for real numbers also hold for complex numbers. For example, $zw = wz$ for any two complex numbers $z$ and $w$.
+
+
+\subsection{Conjugation}
+
+Given a complex number $z = x + yi$, the \emph{(complex) conjugate} of $z$ is defined to be $x - yi$ and is denoted $\bar{z}$. For example, the division in the above example multiplied the denominator $4 - i$ by its conjugate $\bar{4 - i} = 4 + i$. The real numbers are precisely the complex numbers which are equal to their own conjugates, and the purely imaginary numbers are precisely the complex numbers which are the negatives of their own conjugates.
+
+\begin{proposition}[Conjugation properties]
+Let $z$ and $w$ be complex numbers.
+\begin{enumerate}
+\item $\Re z = \frac{z + \bar{z}}{2}$
+\item $\Im z = \frac{z - \bar{z}}{2i}$
+\item $\bar{z + w} = \bar{z} + \bar{w}$
+\item $\bar{z - w} = \bar{z} - \bar{w}$
+\item $\bar{zw} = \bar{z}\cdot\bar{w}$
+\item $\bar{z/w} = \bar{z}/\bar{w}$
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Let $z = a + bi$ and $w = c + di$, where $a,b,c,d$ are real.
+\begin{enumerate}
+\item $\frac{z + \bar{z}}{2} = \frac{(a + bi) + (a - bi)}{2} = \frac{2a}{2} = a = \Re z$.
+\item Exercise.
+\item $\bar{z + w} = \bar{(a + c) + (b + d)i} = (a + c) - (b + d)i = (a - bi) + (c - di) = \bar{z} + \bar{w}$.
+\item Exercise.
+\item We compute
+\begin{equation}
+\bar{zw} = \bar{(a + bi)(c + di)} = \bar{(ac - bd) + (ad + bc)i} = (ac - bd) - (ad + bc)i
+\end{equation}
+and
+\begin{equation}
+\bar{z}\cdot\bar{w} = (a - bi)(c - di) = ac - adi - bci + bdi^2 = (ac - bd) - (ad + bc)i.
+\end{equation}
+These are equal, so $\bar{zw} = \bar{z}\cdot\bar{w}$.
+\item Exercise. (\textit{For one approach, first show that $\bar{1/w} = 1/\bar{w}$.})
+\end{enumerate}
+\end{proof}
+
+The fact that the complex conjugate has properties 3-6 makes it very useful when solving problems with complex number algebra. Of note is that properties 5 and 6 do not hold for the real and imaginary parts, so it can be more convenient to work with conjugates when multiplication and division are involved. If we need to extract real and imaginary parts later, we can do so from the conjugates using properties 1 and 2.
+
+
+\subsection{Square roots}
+
+Introducing $i$ gives us a square root of $-1$. It turns out that we do not need to introduce any new numbers to get square roots not just of any negative real number, but of any complex number! We do this with an example, as the general calculation is more involved (and superseded by a more powerful theorem that we will see later.)
+
+\begin{example}
+To find a square root of $7 + 24i$, we solve the equation $(x + yi)^2 = 7 + 24i$ for real numbers $x$ and $y$. Expanding the left hand side, we require
+\begin{align}
+x^2 - y^2 &= 7, \\
+2xy &= 24.
+\end{align}
+Dividing the second equation by $2x$ gives us $y = 12/x$, and substituting into the first equation,
+\begin{equation}
+x^2 - \frac{144}{x^2} = 7.
+\end{equation}
+Letting $u = x^2$ and multiplying through by $u$, we get the quadratic equation
+\begin{equation}
+u^2 - 7u - 144 = 0.
+\end{equation}
+This has the solutions $u = 16$ and $u = -9$. Since $u = x^2$ with $x$ real, we take the non-negative solution $u = 16$. Then $x = 4$ and $y = 12/x = 3$ is one solution, i.e. $(4 + 3i)^2 = 7 + 24i$. The other solution is $x = -4$ and $y = -3$.
+\end{example}
