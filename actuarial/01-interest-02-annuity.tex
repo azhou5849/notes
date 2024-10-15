@@ -1,0 +1,86 @@
+\subsection{Mortality-free annuities}
+
+Constant payment discrete annuities:
+\begin{itemize}
+\item Annuity due
+\begin{equation*}
+\ax**{\angln} = 1 + v + v^2 + \cdots + v^{n - 1} = \frac{1 - v^n}{1 - v} = \frac{1 - v^n}{d}.
+\end{equation*}
+\item Annuity immediate
+\begin{equation*}
+\ax{\angln} = v\ax**{\angln} = \frac{1 - v^n}{i}
+\end{equation*}
+\item Accumulated value of annuity due
+\begin{equation*}
+\sx**{\angln} = (1 + i)^n\ax**{\angln} = \frac{(1 + i)^n - 1}{d}
+\end{equation*}
+\item Accumulated value of annuity immediate
+\begin{equation*}
+\sx{\angln} = v\sx**{\angln} = \frac{(1 + i)^n - 1}{i}
+\end{equation*}
+\end{itemize}
+
+\newpage
+Non-constant payment discrete annuities (due versions):
+\begin{itemize}
+\item Increasing annuity
+\begin{equation*}
+\begin{split}
+\Ia**_{\angln} &= 1 + 2v + 3v^2 + \cdots + nv^{n - 1} = \frac{\partial}{\partial v}\left(\frac{1 - v^{n + 1}}{1 - v}\right) \\
+&= \frac{(1 - v)(-(n + 1)v^n) - (1 - v^{n + 1})(-1)}{(1 - v)^2} = \frac{nv^{n + 1} - (n + 1)v^n + 1}{(1 - v)^2} \\
+&= \frac{nv^n(v - 1) + 1 - v^n}{d^2} = \frac{\ax**{\angln} - nv^n}{d}
+\end{split}
+\end{equation*}
+\item Decreasing annuity
+\begin{equation*}
+\begin{split}
+\Da**_{\angln} &= n + (n - 1)v + (n - 2)v^2 + \cdots + v^{n - 1} = (n + 1)\ax**{\angln} - \Ia**_{\angln} \\
+&= \frac{d(n + 1)\ax**{\angln} - (\ax**{\angln} - nv^n)}{d} = \frac{(n + 1)(1 - v^n) - \ax**{\angln} + nv^n}{d} \\
+&= \frac{n + 1 - \ax**{\angln} - v^n}{d} = \frac{n - \ax{\angln}}{d}.
+\end{split}
+\end{equation*}
+\end{itemize}
+
+Perpetuities (due versions):
+\begin{itemize}
+\item Constant
+\begin{equation*}
+\ax**{\angl{\infty}} = \lim_{n\to\infty}\ax**{\angln} = \frac{1}{d}
+\end{equation*}
+\item Increasing
+\begin{equation*}
+\Ia**_{\angl{\infty}} = \lim_{n\to\infty}\Ia**_{\angln} = \frac{1}{d^2}
+\end{equation*}
+\end{itemize}
+
+Payments split $m$th-ly:
+\begin{itemize}
+\item Constant annuity due
+\begin{equation*}
+\ax**{\angln}[(m)] = \frac{1}{m}(1 + v^{1/m} + \cdots + v^{n - 1/m}) = \frac{1}{m}\frac{1 - v^n}{1 - v^{1/m}} = \frac{1 - v^n}{d^{(m)}}
+\end{equation*}
+\item Constant annuity immediate
+\begin{equation*}
+\ax{\angln}[(m)] = v^{1/m}\ax**{\angln}[(m)] = \frac{1 - v^n}{i^{(m)}}
+\end{equation*}
+\item Increasing annuity due
+\begin{equation*}
+\begin{split}
+\Ia**_{\angln}^{(m)} &= \frac{1}{m} + \frac{2}{m}v^{1/m} + \cdots + nv^{n - 1/m} \\
+&= \frac{mnv^n(v^{1/m} - 1) + 1 - v^n}{m(1 - v^{1/m})^2} = \frac{\ax**{\angln}[(m)] - nv^n}{d^{(m)}}
+\end{split}
+\end{equation*}
+\end{itemize}
+
+\newpage
+Continuous annuities:
+\begin{itemize}
+\item Constant
+\begin{equation*}
+\ax*{\angln} = \lim_{m\to\infty} \ax**{\angln}[(m)] = \frac{1 - v^n}{\delta} = \int_0^n v^t\,dt
+\end{equation*}
+\item Increasing 
+\begin{equation*}
+\Ia*_{\angln} = \lim_{m\to\infty} \Ia**_{\angln}^{(m)} = \frac{\ax*{\angln} - nv^n}{\delta} = \int_0^n tv^t\,dt
+\end{equation*}
+\end{itemize}

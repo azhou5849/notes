@@ -1,0 +1,17 @@
+\subsection{Discrete mortality}
+
+Discrete mortality symbols
+\begin{itemize}
+\item Death symbol $d_x = \lx{x} - \lx{x + 1}$
+\item First age in life table $\alpha$
+\item Last age in life table $\omega$, so that $p_{\omega} = 0$
+\end{itemize}
+
+Define random variable $K_x$ for future \emph{completed} years survived
+\begin{itemize}
+\item $T_x = K_x + s$ for a random variable $s$ with values in $[0,1)$
+\item Probability mass function
+\begin{equation*}
+f_{K_x}(k) = \mathbb{P}[K_x = k] = \mathbb{P}[x\leq X < x + k\mid X\geq x] = \qx[k|]{x} = \frac{d_{x + k}}{\lx{x}}
+\end{equation*}
+\end{itemize}

@@ -1,0 +1,45 @@
+\subsection{Survival functions and continuous mortality}
+
+Let $X = T_0$ be the continuous random variable for the future life span of a newborn
+\begin{itemize}
+\item Distribution function $F_t = F_X(t) = \mathbb{P}[X\leq t]$
+\item Survival function $S_t = S_X(t) = \mathbb{P}[X > t] = 1 - F_X(t)$
+\item Probability density function $f_X(t) = \frac{d}{dt}F_X(t) = -\frac{d}{dt}S_X(t)$
+\end{itemize}
+For an individual aged $x$, denote by $T_x = X\vert_{X\geq x} - x$ the random variable for their future life span (additional years only)
+\begin{itemize}
+\item Distribution function
+\begin{equation*}
+F_{x + t} = F_{T_x}(t) = \frac{\mathbb{P}[x\leq X\leq x + t]}{\mathbb{P}[X\geq x]}
+\end{equation*}
+\item Survival function
+\begin{equation*}
+S_{x + t} = 1 - F_{T_x}(t) = \frac{\mathbb{P}[X > x + t]}{\mathbb{P}[X\geq x]} = \frac{S_X(x + t)}{S_X(x)}
+\end{equation*}
+\item Warning: $S_{30 + 10}\neq S_{40}$
+\end{itemize}
+
+Mortality symbols
+\begin{itemize}
+\item $\px[t]{x} = \mathbb{P}[T_x > t] = S_{x + t}$, special case $p_x = \px[1]{x}$
+\item $\qx[t]{x} = 1 - \px[t]{x}$, special case $q_x = \qx[1]{x}$
+\item $\lx{x} = \lx{0}\cdot S_x$ is the number of people alive at time $x$
+\item Deferred death
+\begin{equation*}
+\qx[t|u]{x} = \mathbb{P}[t < T_x\leq t + u] = \px[t]{x}\cdot\qx[u]{x + t} = \qx[t + u]{x} - \qx[t]{x} = \px[t]{x} - \px[t + u]{x}
+\end{equation*}
+\end{itemize}
+
+Force of mortality
+\begin{itemize}
+\item ``Probability of instant death'' probability density
+\begin{align*}
+\mu_x\,dx &= \mathbb{P}[T_x\leq dx] = \mathbb{P}[x\leq X\leq x + dx\mid X\geq x] \\
+\mu_x &= \lim_{dx\to 0}\frac{S_X(x) - S_X(x + dx)}{dx\cdot S_X(x)} = -\frac{S_X'(x)}{S_x} = -\frac{d}{dx}(\ln S_x)
+\end{align*}
+\item Force of mortality and probability density
+\begin{align*}
+f_X(x) &= -S_X'(x) = S_x\mu_x = \px[x]{0}\mu_x, \\
+f_{T_x}(t) &= -S_{T_x}'(t) = -S_X'(x + t)/S_x = \mu_{x + t}\frac{S_X(x + t)}{S_x} = \px[t]{x}\mu_{x + t}
+\end{align*}
+\end{itemize}
