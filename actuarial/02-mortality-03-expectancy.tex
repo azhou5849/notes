@@ -6,5 +6,27 @@
 \eringx{x} &= \mathbb{E}[T_x] = \int_0^{\infty} t\cdot f_{T_x}(t)\,dt = -\int_0^{\infty} t\cdot\frac{d}{dt}S_{T_x}'(t)\,dt \\
 &= [-t\cdot S_{T_x}(t)]_0^{\infty} + \int_0^{\infty} S_{T_x}(t)\,dt = \int_0^{\infty} \px[t]{x}\,dt = \frac{1}{S_x}\int_0^{\infty} S_X(x + t)\,dt
 \end{align*}
-\item 
+\item Curtate life expectancy (discrete)
+\begin{align*}
+e_x &= \mathbb{E}[K_x] = \sum_{t = 1}^{\infty} t\cdot f_{K_x}(t) \\
+&= \sum_{t = 1}^{\infty}\mathbb{P}[K_x\geq t] = \sum_{t = 1}^{\infty} \px[t]{x}
+\end{align*}
+\item Since $\mathbb{E}[T_x] = \mathbb{E}[K_x] + \mathbb{E}[s]$, can estimate $\mathbb{E}[s]\approx 1/2$ and
+\begin{equation*}
+\eringx{x}\approx e_x + \frac{1}{2}
+\end{equation*}
+\item Temporary life expectancy random variables $T_{\endow{x}{n}} = \min(T_x,n)$ and $K_{\endow{x}{n}} = \min(K_x,n)$
+\begin{align*}
+\eringx{\endow{x}{n}} &= \mathbb{E}[T_{\endow{x}{n}}] = \int_0^n \px[t]{x}\,dt \\
+e_{\endow{x}{n}} &= \mathbb{E}[K_{\endow{x}{n}}] = \sum_{t = 1}^n \px[t]{x}
+\end{align*}
+\item $T_{\endow{x}{n}} = K_{\endow{x}{n}} + s_n$ with $s_n = s$ if $T_x < n$ and $s_n = 0$ otherwise, so
+\begin{equation*}
+\mathbb{E}[s_n] = \mathbb{P}[T_x < n]\cdot\mathbb{E}[s\mid T_x < n]\approx\frac{\qx[n]{x}}{2}
+\end{equation*}
+\item Backward recurrences
+\begin{align*}
+e_x &= \sum_{t = 1}^n \px[t]{x} + \sum_{t = n + 1}^{\infty} \px[t]{x} = e_{\endow{x}{n}} + \px[n]{x}\cdot e_{x + n}, & e_{\omega} &= 0 \\
+\eringx{x} &= \int_0^n \px[t]{x}\,dt + \int_n^{\infty} \px[t]{x}\,dt = \eringx{\endow{x}{n}} + \px[n]{x}\cdot\eringx{x + n}, & \eringx{\omega} &= 0
+\end{align*}
 \end{itemize}
