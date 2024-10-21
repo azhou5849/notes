@@ -1,0 +1,31 @@
+\subsection{Analytic laws}
+
+de Moivre's law (DML), straight-line mortality
+\begin{itemize}
+\item $S_x = 1 - \frac{x}{\omega}$
+\item $\qx[t]{x} = \frac{t}{\omega - x}$
+\item $\mu_x = -\frac{S_x'}{S_x} = \frac{1}{\omega - x}$
+\item $\eringx{x} = \frac{\omega - x}{2}$
+\item DML implies UDD
+\end{itemize}
+
+Modified DML
+\begin{itemize}
+\item $\mu_x = \alpha\cdot\mu_x^{DML} = \frac{\alpha}{\omega - x}$
+\item $S_x = \exp\left[\int_0^x (-\mu_t)\,dt\right] = (S_x^{DML})^{\alpha} = (1 - \frac{x}{\omega})^{\alpha}$
+\end{itemize}
+
+Constant force of mortality (CFM law)
+\begin{itemize}
+\item $\mu_x = \mu$ constant
+\item $S_x = e^{-\mu x}$
+\item $\px[t]{x} = e^{-\mu t}$ independent of $x$
+\item $\eringx{x} = \int_0^{\infty}\px[t]{x}\,dt = 1/\mu$
+\item CFM law implies CFM fractional
+\end{itemize}
+
+Makeham's law
+\begin{itemize}
+\item $\mu_x = A + Bc^x$ for parameters $A,B,c$
+\item Gompertz's law when $A = 0$
+\end{itemize}

@@ -1,1 +1,17 @@
 \subsection{Fractional age assumptions}
+
+Uniform distribution of deaths (UDD)
+\begin{itemize}
+\item $\mathbb{P}[s\leq t] = t$ when $0\leq t < 1$
+\item $\qx[t]{x} = \mathbb{P}[0\leq T_x < 1]\cdot\mathbb{P}[s < t] = tq_x$
+\item $\mu_{x + t} = \px[t]{x}^{-1}f_{T_x}(t) = q_x/\px[t]{x}$ when $0\leq t < 1$
+\item Linear interpolation: $\ell_{x + t} = (1 - t)\ell_x + t\ell_{x + 1}$
+\item $\mathbb{E}[s] = 1/2$, so $\eringx{x} = e_x + 1/2$ exactly
+\end{itemize}
+
+Constant form of mortality (CFM fractional)
+\begin{itemize}
+\item $\mu_{x + t} = \mu_x$ when $0\leq t < 1$
+\item $\ln (S_{x + t} / S_x) = \int_0^t (-\mu_{x + t})\,dt = -t\mu_x$, so $\px[t]{x} = e^{-t\mu_x}$
+\item Exponential interpolation: $\ell_{x + t} = \ell_x^{1 - t}\cdot\ell_{x + 1}^t$
+\end{itemize}
