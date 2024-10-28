@@ -1,1 +1,29 @@
 \subsection{Discrete life insurance}
+
+Assumptions and notation
+\begin{itemize}
+\item Benefits $b_{K + 1}$ paid at the end of the year
+\item Constant interest rate
+\item Payout random variable $Z$
+\end{itemize}
+
+Whole life insurance
+\begin{itemize}
+\item $Z = b_{K + 1}v^{K + 1}$
+\item Expected value $\mathbb{E}[Z] = \sum_{k = 0}^{\infty} b_{k + 1}v^{k + 1}\qx[k|]{x}$
+\item Second moment $\mathbb{E}[Z^2] = \sum_{k = 0}^{\infty} b_{k + 1}^2v^{2(k + 1)}\qx[k|]{x}$ equivalent to expected value of $Z$ for benefit $b_{k + 1}^{*} = b_{k + 1}^2$ and interest $i^{*} = (1 + i)^2 - 1$, i.e. $v^{*} = v^2$ or $\delta^{*} = 2\delta$
+\item If $b_{k + 1} = 1$ throughout, define $\Ax{x} = \mathbb{E}[Z]$ and $\Ax[][2]{x} = \mathbb{E}[Z^2]$
+\item DML mortality law
+\begin{align*}
+\Ax{x} &= \sum_{k = 0}^{\omega - x - 1}\frac{v^{k + 1}}{\omega - x} = \frac{\ax{\angl{\omega - x}}}{\omega - x} \\
+\Ax[][2]{x} &= \sum_{k = 0}^{\omega - x - 1}\frac{v^{2(k + 1)}}{\omega - x} = \frac{\ax{\angl{\omega - x}i^{*}}}{\omega - x}
+\end{align*}
+\item CFM mortality law
+\begin{align*}
+\Ax{x} &= \sum_{k = 0}^{\infty} v^{k + 1}e^{-\mu k}(1 - e^{-\mu}) = v(1 - e^{-\mu})\sum_{k = 0}^{\infty} (ve^{-\mu})^k \\
+&= e^{-\delta}(1 - e^{-\mu})\cdot\frac{1}{1 - e^{-(\delta + \mu)}} = \frac{e^{-\delta}(1 - e^{-\mu})}{1 - e^{-(\delta + \mu)}} \\
+\Ax[][2]{x} &= \sum_{k = 0}^{\infty} v^{2(k + 1)}e^{-\mu k}(1 - e^{-\mu}) = \frac{e^{-\delta^{*}}(1 - e^{-\mu})}{1 - e^{-(\delta^{*} + \mu)}}
+\end{align*}
+\end{itemize}
+
+$n$-year term insurance
