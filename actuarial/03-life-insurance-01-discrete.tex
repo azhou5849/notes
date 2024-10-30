@@ -2,7 +2,7 @@
 
 Assumptions and notation
 \begin{itemize}
-\item Benefits $b_{K + 1}$ paid at the end of the year
+\item Benefit $b_{K + 1}$ paid at the end of the year of death
 \item Constant interest rate
 \item Payout random variable $Z$
 \end{itemize}
@@ -27,3 +27,33 @@ Whole life insurance
 \end{itemize}
 
 $n$-year term insurance
+\begin{itemize}
+\item $Z = \begin{cases} b_{K + 1}v^{K + 1} & K < n \\ 0 & K\geq n \end{cases}$
+\item Expected value $\mathbb{E}[Z] = \sum_{k = 0}^{n - 1} b_{k + 1}v^{k + 1}\qx[k|]{x}$
+\item Second moment $\mathbb{E}[Z^2] = \sum_{k = 0}^{n - 1} b_{k + 1}^2v^{2(k + 1)}\qx[k|]{x}$
+\item If $b_{k + 1} = 1$ for $k < n$, define $\Ax{\term{x}{n}} = \mathbb{E}[Z]$
+\item DML mortality law: if $n' = \min\{n, \omega - x\}$, then
+\begin{align*}
+\Ax{\term{x}{n}} &= \frac{\ax{\angl{n'}}}{\omega - x} \\
+\Ax[][2]{\term{x}{n}} &= \frac{\ax{\angl{n'}i^{*}}}{\omega - x}
+\end{align*}
+\item CFM mortality law
+\begin{align*}
+\Ax{\term{x}{n}} &= v(1 - e^{-\mu})\sum_{k = 0}^{n - 1} (ve^{-\mu})^k = e^{-\delta}(1 - e^{-\mu})\cdot\frac{1 - e^{-n(\delta + \mu)}}{1 - e^{-(\delta + \mu)}} \\
+\Ax[][2]{\term{x}{n}} &= e^{-\delta^{*}}(1 - e^{-\mu})\cdot\frac{1 - e^{-n(\delta^{*} + \mu)}}{1 - e^{-(\delta^{*} + \mu)}}
+\end{align*}
+\end{itemize}
+
+$n$-year pure endowment
+\begin{itemize}
+\item $Z = 0$ if $K < n$ and $Z = bv^n$ if $K\geq n$, where $b$ is benefit paid out for surviving
+\item Expected value $\mathbb{E}[Z] = bv^n\mathbb{P}[K\geq n] = bv^n\px[n]{x}$
+\item Second moment $\mathbb{E}[Z^2] = b^2v^{2n}\px[n]{x}$
+\item If $b = 1$, define $\Ax{\pureendow{x}{n}} = \Ex[n]{x} = \mathbb{E}[Z] = v^n\px[n]{x}$
+\end{itemize}
+
+$n$-year (endowment) insurance
+\begin{itemize}
+\item $Z = Z_{n\text{-year terminsurance}} + Z_{n\text{-year pure endowment}} = \begin{cases} b_{K + 1}v^{K + 1} & K < n \\ bv^n & K\geq n \end{cases}$
+\item If $b_{k + 1} = 1$ for $k < n$ and $b = 1$, define $\Ax{\endow{x}{n}} = \mathbb{E}[Z] = \Ax{\term{x}{n}} + \Ex[n]{x}$
+\end{itemize}
