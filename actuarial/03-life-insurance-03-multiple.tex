@@ -1,0 +1,31 @@
+\subsection{Insurance payable more often per year}
+
+Assumptions and notation
+\begin{itemize}
+\item Benefit paid at end of period is constant through any given year
+\item Payout random variable $Z^{(m)}$, expectations $\Ax{x}[(m)]$, etc.
+\end{itemize}
+
+Claims acceleration
+\begin{itemize}
+\item Time of payout on average approximately $\frac{m + 1}{2m}$ through the year
+\item $\mathbb{E}[Z^{(m)}]\approx (1 + i)^{(m - 1)/2m}\mathbb{E}[Z]$
+\item In $m\to\infty$ limit, $\mathbb{E}[\bar{Z}]\approx (1 + i)^{1/2}\mathbb{E}[Z]$
+\end{itemize}
+
+UDD assumption
+\begin{itemize}
+\item $K^{(m)} = K + S^{(m)}$ with $S^{(m)}\sim U(\{1/m, 2/m, \ldots, 1\})$ independent of $K$
+\item Expected payout
+\begin{align*}
+\mathbb{E}[Z^(m)] &= \mathbb{E}[b_{K + 1}v^K]\mathbb{E}[v^{S^{(m)}}] = v^{-1}\mathbb{E}[Z]\mathbb{E}[v^{S^{(m)}}] \\
+&= \frac{v^{-1}}{m}(v^{1/m} + v^{2/m} + \cdots + v)\mathbb{E}[Z] = \frac{v^{-1} - 1}{m(v^{-1/m} - 1)}\mathbb{E}[Z] \\
+&= \frac{i}{i^{(m)}}\mathbb{E}[Z]
+\end{align*}
+\item If $b = 1$ throughout, $\Ax{x}[(m)] = \frac{i}{i^{(m)}}\Ax{x}$, etc.
+\item In limit $m\to\infty$,
+\begin{equation*}
+\mathbb{E}[\bar{Z}] = \frac{i}{\delta}\mathbb{E}[Z],\quad\Ax*{x} = \frac{i}{\delta}\Ax{x},\quad\text{etc.}
+\end{equation*}
+agreeing with result derived from $T = K + S$ with $S\sim U([0,1])$ independent on $K$
+\end{itemize}

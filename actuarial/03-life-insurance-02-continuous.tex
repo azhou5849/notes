@@ -6,3 +6,51 @@ Assumptions and notation
 \item Constant force of interest
 \item Payout random variable $Z$ or $\bar{Z}$
 \end{itemize}
+
+Whole life insurance
+\begin{itemize}
+\item $\bar{Z} = b_Tv^T = b_Te^{-\delta T}$
+\item Expected value $\mathbb{E}[\bar{Z}] = \int_0^{\infty} b_te^{-\delta t}\cdot f_{T_x}(t)\,dt$
+\item Second moment $\mathbb{E}[\bar{Z}^2] = \int_0^{\infty} b_t^2e^{-2\delta t}\cdot f_{T_x}(t)\,dt$
+\item If $b_t = 1$ throughout, define $\Ax*{x} = \mathbb{E}[\bar{Z}]$
+\item DML mortality law
+\begin{align*}
+\Ax*{x} &= \int_0^{\omega - x} e^{-\delta t}\cdot\frac{1}{\omega - x}\,dt = \frac{1 - e^{-\delta(\omega - x)}}{\delta(\omega - x)} = \frac{\ax*{\angl{\omega - x}}}{\omega - x} \\
+\Ax*[][2]{x} &= \int_0^{\omega - x} e^{-2\delta t}\cdot\frac{1}{\omega - x}\,dt = \frac{\ax*{\angl{\omega - x}|i^{*}}}{\omega - x}
+\end{align*}
+\item CFM mortality law
+\begin{align*}
+\Ax*{x} &= \int_0^{\infty} e^{-\delta t}\cdot \mu e^{-\mu t}\,dt = \frac{\mu}{\delta + \mu} \\
+\Ax*[][2]{x} &= \int_0^{\infty} e^{-2\delta t}\cdot \mu e^{-\mu t}\,dt = \frac{\mu}{\delta^{*} + \mu}
+\end{align*}
+\end{itemize}
+
+$n$-year term insurance
+\begin{itemize}
+\item $\bar{Z} = \begin{cases} b_Te^{-\delta T} & T < n, \\ 0 & T\geq n \end{cases}$
+\item Expected value $\mathbb{E}[\bar{Z}] = \int_0^n b_te^{-\delta t}\cdot f_{T_x}(t)\,dt$
+\item Second moment $\mathbb{E}[\bar{Z}^2] = \int_0^n b_t^2e^{-2\delta t}\cdot f_{T_x}(t)\,dt$
+\item If $b_t = 1$ for $t < n$, define $\Ax*{\term{x}{n}} = \mathbb{E}[\bar{Z}]$
+\item DML mortality law: if $n' = \min\{n, \omega - x\}$, then
+\begin{align*}
+\Ax*{\term{x}{n}} &= \int_0^{n'} e^{-\delta t}\cdot\frac{1}{\omega - x}\,dt = \frac{1 - e^{-\delta n'}}{\delta(\omega - x)} = \frac{\ax*{\angl{n'}}}{\omega - x} \\
+\Ax*[][2]{\term{x}{n}} &= \int_0^{n'} e^{-2\delta t}\cdot\frac{1}{\omega - x}\,dt = \frac{\ax*{\angl{n'}|i^{*}}}{\omega - x}
+\end{align*}
+\item CFM mortality law
+\begin{align*}
+\Ax*{\term{x}{n}} &= \int_0^n e^{-\delta t}\cdot \mu e^{-\mu t}\,dt = \frac{\mu}{\delta + \mu}\left(1 - e^{-(\delta + \mu)n}\right) \\
+\Ax*[][2]{\term{x}{n}} &= \int_0^n e^{-2\delta t}\cdot \mu e^{-\mu t}\,dt = \frac{\mu}{\delta^{*} + \mu}\left(1 - e^{-(\delta^{*} + \mu)n}\right)
+\end{align*}
+\end{itemize}
+
+Pure endowment and endowment insurance
+\begin{itemize}
+\item Defined the same way as for discrete insurance
+\item Notations $\Ex[n]{x}$ and $\Ax*{\endow{x}{n}}$
+\end{itemize}
+
+Recurrences
+\begin{itemize}
+\item $\Ax*{x} = \Ax*{\term{x}{n}} + \Ex[n]{x}\cdot\Ax*{x + n}$
+\item $\Ax*{\term{x}{n}} = \Ax*{\term{x}{k}} + \Ex[k]{x}\cdot\Ax*{\term{x + k}{n - k}}$ for $0\leq k\leq n$
+\end{itemize}

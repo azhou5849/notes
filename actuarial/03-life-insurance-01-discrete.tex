@@ -57,3 +57,9 @@ $n$-year (endowment) insurance
 \item $Z = Z_{n\text{-year terminsurance}} + Z_{n\text{-year pure endowment}} = \begin{cases} b_{K + 1}v^{K + 1} & K < n \\ bv^n & K\geq n \end{cases}$
 \item If $b_{k + 1} = 1$ for $k < n$ and $b = 1$, define $\Ax{\endow{x}{n}} = \mathbb{E}[Z] = \Ax{\term{x}{n}} + \Ex[n]{x}$
 \end{itemize}
+
+Recurrences
+\begin{itemize}
+\item $\Ax{x} = \Ax{\term{x}{n}} + \Ex[n]{x}\cdot\Ax{x + n}$
+\item $\Ax{\term{x}{n}} = \Ax{\term{x}{k}} + \Ex[k]{x}\cdot\Ax{\term{x + k}{n - k}}$ for $0\leq k\leq n$
+\end{itemize}
