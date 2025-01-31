@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{mathtools,amssymb,amsthm,enumitem,tikz}
+\usepackage[letterpaper]{geometry}
+
+\setlength{\parskip}{3pt plus 1pt minus 1pt}
+\setlength{\parindent}{0pt}
+
+
+\title{MA582 Homework 1}
+\author{Alan Zhou}
+\date{Due 2025-02-06}
+
+
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Problem 1}
+Let $X\sim N(3,25)$ (thus $\operatorname{var}(X) = 25$). Compute $m_4$ exactly.
+
+\begin{proof}[Solution.] 
+We know from class that the mgf of $X$ is
+\begin{equation*}
+M_X(t) = \exp\left[\mu t + \frac{1}{2}\sigma^2t^2\right],
+\end{equation*}
+and we wish to find $m_4 = M_X^{(4)}(0)$ when $\mu = 3$ and $\sigma^2 = 25$.\par 
+Several uses of the product and chain rule yield
+\begin{align*}
+M_X^{(1)}(t) &= [\mu + \sigma^2 t]M_X(t), \\
+M_X^{(2)}(t) &= \sigma^2 M_X(t) + [\mu + \sigma^2 t]M_X^{(1)}(t), \\
+M_X^{(3)}(t) &= \sigma^2 M_X^{(1)}(t) + \sigma^2 M_X^{(1)}(t) + [\mu + \sigma^2 t]M_X^{(2)}(t) \\
+&= 2\sigma^2 M_X^{(1)}(t) + [\mu + \sigma^2 t]M_X^{(2)}(t), \\
+M_X^{(4)}(t) &= 2\sigma^2 M_X^{(2)}(t) + \sigma^2 M_X^{(2)}(t) + [\mu + \sigma^2 t]M_X^{(3)}(t) \\
+&= 3\sigma^2 M_X^{(2)}(t) + [\mu + \sigma^2 t]M_X^{(3)}(t).
+\end{align*}
+Then, letting $t = 0$,
+\begin{align*}
+m_1 &= M_X^{(1)}(0) = \mu M_X(0) = \mu, \\
+m_2 &= M_X^{(2)}(0) = \sigma^2 M_X(0) + \mu M_X^{(1)}(0) = \mu^2 + \sigma^2, \\
+m_3 &= M_X^{(3)}(0) = 2\sigma^2 M_X^{(1)}(0) + \mu M_X^{(2)}(0) \\
+&= 2\sigma^2\cdot\mu + \mu\cdot (\mu^2 + \sigma^2) = \mu^3 + 3\mu\sigma^2, \\
+m_4 &= M_X^{(4)}(0) = 3\sigma^2 M_X^{(2)}(0) + \mu M_X^{(3)}(0) \\
+&= 3\sigma^2(\mu^2 + \sigma^2) + \mu(\mu^3 + 3\mu\sigma^2) = \mu^4 + 6\mu^2\sigma^2 + 3\sigma^4.
+\end{align*}
+When $\mu = 3$ and $\sigma^2 = 25$ this evaluates to $\boxed{3306}$.
+\end{proof}
+
+
+\section*{Problem 2}
+Suppose $X_i\sim N(\mu_i, \sigma_i^2)$ for $i = 1,2$, and suppose $X_1$ and $X_2$ are independent.\par Prove that $T = X_1 + X_2$ is normally distributed, and determine the mean and variance of $T$.
+
+\begin{proof}[Solution.]
+Since $X_1$ and $X_2$ are independent, the mgf of $T$ is the product of the mgfs of $X_1$ and $X_2$. From class, we know the mgfs of normal random variables, and we multiply to find that
+\begin{align*}
+M_T(t) &= M_{X_1}(t)\cdot M_{X_2}(t) \\
+&= \exp\left[\mu_1 t + \frac{1}{2}\sigma_1^2t^2\right]\cdot\exp\left[\mu_2 t + \frac{1}{2}\sigma_2^2t^2\right] \\
+&= \exp\left[(\mu_1 + \mu_2)t + \frac{1}{2}(\sigma_1^2 + \sigma_2^2)t^2\right].
+\end{align*}
+This is the mgf of a normal random variable with mean $\mu_1 + \mu_2$ and variance $\sigma_1^2 + \sigma_2^2$. Therefore, by the uniqueness of moment generating functions, $\boxed{T\sim N(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)}$.
+\end{proof}
+
+
+
+\end{document}
