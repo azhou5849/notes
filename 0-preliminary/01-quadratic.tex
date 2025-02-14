@@ -1,6 +1,11 @@
 \section{Quadratics}
 
-In this section, we review the main ideas in the theory of quadratics in one variable. A \emph{quadratic in $X$} is an expression of the form $aX^2 + bX + c$, where $a$, $b$, and $c$ are constants (or at least independent of $X$) and $a\neq 0$. A \emph{root} of the quadratic expression $aX^2 + bX + c$ is a value $r$ for which $ar^2 + br + c = 0$.
+In this section, we review the main ideas in the theory of quadratics in one variable. A \emph{quadratic in $X$} is an expression of the form $aX^2 + bX + c$, where $a,b,c$ are independent of $X$ and $a\neq 0$. Collectively $a,b,c$ are the \emph{coefficients} of the quadratic while $aX^2, bX, c$ are the \emph{terms} of the quadratic.
+\begin{itemize}
+\item test1
+\item test2
+\end{itemize}
+A \emph{root} of the quadratic expression $aX^2 + bX + c$ is a value $r$ for which $ar^2 + br + c = 0$.
 
 \subsection{Finding roots by factoring}
 
@@ -14,5 +19,18 @@ For a given quadratic, if we can find linear factors, identifying roots becomes 
 Find the roots of $X^2 + X - 6$. 
 \end{example}
 \begin{solution}
-Since this quadratic is equivalent to $(X - 2)(X + 3)$, the values of $X$ which make the expression evaluate to $0$ are those values $r$ for which either $r - 2 = 0$ or $r + 3 = 0$. Hence the roots of $X^2 + X - 6$ are $2$ and $-3$.
+Let $r$ be a root, so by definition, we need $r^2 + r - 6 = 0$. By our calculation above, the left hand side is equal to $(r - 2)(r + 3)$. For a product of two (or more) factors to be equal to $0$, at least one of them must be $0$. Therefore, any root $r$ must satisfy $r - 2 = 0$ or $r + 3 = 0$, and if $r$ satisfies at least one of these two equations, it is a root. Hence the roots of $X^2 + X - 6$ are $2$ and $-3$.
+\end{solution}
+
+\begin{example}
+Find the roots of $X^2 - 8X + 12$.
+\end{example}
+\begin{solution}
+This time, we need to find a factorisation of $X^2 - 8X + 12$ first. A reasonable guess is that the factorisation has the form $(X + A)(X + B)$, where $A$ and $B$ are constants to be determined. Expanding,
+\begin{align*}
+(X + A)(X + B) &= X(X + B) + A(X + B) \\
+&= X^2 + BX + AX + AB \\
+&= X^2 + (A + B)X + AB.
+\end{align*}
+The coefficients must match, 
 \end{solution}
