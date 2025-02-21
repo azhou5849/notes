@@ -8,7 +8,7 @@
 
 \title{MA582 Homework 2}
 \author{Alan Zhou}
-\date{Due 2025-02-??}
+\date{Due 2025-02-23}
 
 
 
@@ -17,16 +17,40 @@
 \maketitle
 
 
-\section{Problem 1}
+\section{Main Problem}
 
 Consider the Weiner parametric family $\{W(\theta):\theta\text{ real}\}$, where it so happens that $\theta = E[\log X]$, if the random variable $X > 0$ obeys $X\sim W(\theta)$. Devise a UC estimator of $\theta$.
 
 \begin{proof}[Solution]
-solution here
+Let $Y_i = \log X_i$ for $i = 1, 2, 3, \ldots$, where $X_i\sim W(\theta)$ for all $i$. Then $\theta = E[Y_i]$ for all $i$ and we can consider the estimator
+\begin{equation*}
+\hat{\theta}_n = \frac{Y_1 + \cdots + Y_n}{n} = \frac{\log(X_1\cdots X_n)}{n}.
+\end{equation*}
+To see that $\hat{\theta}_n$ is unbiased, we compute
+\begin{equation*}
+E[\hat{\theta}_n] = \frac{1}{n}\sum_{i = 1}^n E[Y_i] = \frac{1}{n}\sum_{i = 1}^n\theta = \theta.
+\end{equation*}
+To see that $\hat{\theta}_n$ is consistent, the weak law of large numbers\footnote{I assume ``This family is meant to be boring'' means that the $Y_i$s have finite variances, since our version of the WLLN in class invokes this assumption.} tells us that since the $Y_i$'s are i.i.d.~with finite expectation $\theta$,
+\begin{equation*}
+\hat{\theta}_n = \frac{Y_1 + \cdots + Y_n}{n}\stackrel{p}{\longrightarrow} \theta.
+\end{equation*}
+\end{proof}
 
-% try (\log X1 + ... + log Xn)/n = log(X1...Xn)/n first
-% for U (unbiased), show E(hat(theta)) = theta; this works
-% for C (consistency), show hat(theta) -> theta in probability; this works by WLLN
+\newpage
+\section{Additional Problem}
+
+Prove that for any constant $0 < \alpha < 1/2$ there is a constant $C = C(\alpha) > 0$ such that for all $t > 0$,
+\begin{equation*}
+P(\lvert Z\rvert\geq t)\leq C\exp(-\alpha t^2),
+\end{equation*}
+which implies an extremely rapid decay for the survival function of $\lvert Z\rvert$ as $t\to\infty$.
+
+\begin{proof}[Solution]
+Squaring both sides, for $t > 0$ the statement $\lvert Z\rvert\geq t$ is equivalent to $Z^2\geq t^2$. For any $\alpha > 0$ satisfying $M_{Z^2}(\alpha) < \infty$, we apply Markov's inequality to the random variable $Z^2$ with the increasing function $u\mapsto e^{\alpha u}$ to get
+\begin{equation*}
+P(Z^2\geq t^2) = \frac{E[e^{\alpha Z^2}]}{e^{\alpha t^2}} = M_{Z^2}(\alpha)\exp(-\alpha t^2).
+\end{equation*}
+In class, we computed that $M_{Z^2}(\alpha) = (1 - 2\alpha)^{-1/2}$ for $0 < \alpha < 1/2$, so we can take our constant to be $C(\alpha) = (1 - 2\alpha)^{-1/2}$ for $0 < \alpha < 1/2$.
 \end{proof}
 
 
