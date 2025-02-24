@@ -3,24 +3,70 @@
 \subsection{Vocabulary}
 
 A \emph{quadratic (polynomial) in $X$} is an expression of the form $aX^2 + bX + c$, where $a,b,c$ are independent of $X$ and $a\neq 0$. Collectively $a,b,c$ are the \emph{coefficients} of the quadratic while $aX^2, bX, c$ are the \emph{terms} of the quadratic.
-\begin{itemize}
-\item The term independent of $X$, namely $c$, is the \emph{constant term} or the \emph{degree-0 term} (as it can be written as $cX^{\color{red}0}$).
-\item The term with just $X$, namely $bX$, is the \emph{linear term} or the \emph{degree-1 term} (as it is $bX^{\color{red}1}$).
-\item The term with $X^2$, namely $aX^2$, is the \emph{quadratic term} or the \emph{degree-2 term}. Since this term contains the highest power of $X$ in the whole expression, it is also called the \emph{leading term}.
-\end{itemize}
-Specific coefficients can be referred to by borrowing the names of their corresponding terms. For example, in the above, $a$ can be called the \emph{leading coefficient}.
-
-A \emph{root} of the quadratic expression $aX^2 + bX + c$ is a value $r$ for which the expression is $0$ when evaluated at $X = r$, i.e. $ar^2 + br + c = 0$.
 
 \subsection{Factoring quadratics}
+
+Some quadratics arise as a product of two linear expressions, such as
+\begin{equation*}
+(X - 2)(X + 3) = X(X + 3) - 2(X + 3) = X^2 + 3X - 2X - 6 = X^2 + X - 6. 
+\end{equation*}
+\emph{Factoring} refers to the reverse process of finding, for a given quadratic, two linear expressions which multiply to that quadratic. Here we focus on factoring \emph{over the integers}, where we look for linear expressions with integer coefficients who multiply to a given quadratic with integer coefficients.
+
+\begin{example}
+Factor $X^2 + 8X + 12$.
+\end{example}
+\begin{solution}
+A reasonable guess is that a factorization has the form $(X + A)(X + B)$. Expanding,
+\begin{equation*}
+(X + A)(X + B) = X(X + B) + A(X + B) = X^2 + (A + B)X + AB.
+\end{equation*}
+Matching coefficients, we want $A + B = 8$ and $AB = 12$. Listing out pairs of integers which multiply to 12, or pairs of integers which sum to 8, we find that if $A$ and $B$ are $2$ and $6$ (in either order), both equations hold. Therefore, $X^2 + 8X + 12 = \boxed{(X + 2)(X + 6)}$.
+\end{solution}
+
+\begin{example}
+Factor $X^2 - 10X + 21$.
+\end{example}
+\begin{solution}
+Setting up a factorization $(X + A)(X + B)$ as before, this time we need $A + B = -10$ and $AB = 21$. Since $AB$ is positive, we know that $A$ and $B$ have the same sign, and since $A + B$ is negative, we know that in fact, both $A$ and $B$ are negative. To make guess-and-check easier, let $A = -C$ and $B = -D$, where now $C$ and $D$ are \underline{positive} integers. Then $C + D = 10$ and $CD = 21$, and testing values, we find that 3 and 7 do the job. This means that $A$ and $B$ are $-3$ and $-7$ in some order, so $X^2 - 10X + 21 = \boxed{(X - 3)(X - 7)}$.
+\end{solution}
+
+\begin{example}
+Factor $X^2 - 19X + 48$.
+\end{example}
+\begin{solution}
+This time, we start with the sign analysis. Since the constant term $48$ is positive, we know that the constants of the factors have the same sign. Since the linear coefficient $-19$ is negative, those constants have to be negative. Therefore, we can set up a factorization of the form
+\begin{equation*}
+(X - A)(X - B) = X^2 - (A + B)X + AB.
+\end{equation*}
+Matching coefficients, we need two positive integers whose sum is 19 and whose product is 48. These turn out to be 3 and 16, so $X^2 - 19X + 48 = \boxed{(X - 3)(X - 16)}$.
+\end{solution}
+
+\begin{example}
+Factor $X^2 + 7X - 44$.
+\end{example}
+\begin{solution}
+Since the constant term $-44$ is negative, the constants of the factors have opposite sign. Therefore, we can set up a factorization of the form
+\begin{equation*}
+(X + A)(X - B) = X^2 + (A - B)X - AB.
+\end{equation*}
+Matching coefficients, we need two positive integers whose product is 44 and whose difference is 7. These turn out to be 4 and 11. As $A - B = 7$, we specifically require $A = 11$ and $B = 4$, so then our final answer is $X^2 + 7X - 44 = \boxed{(X + 11)(X - 4)}$.
+\end{solution}
+
+\begin{example}
+Factor $X^2 - X - 210$.
+\end{example}
+\begin{solution}
+Since the constant term is negative, we are looking for positive integers whose difference is 1 and whose product is 210. These turn out to be 14 and 15. As the linear coefficient is negative, the integer being added must be 14 while the integer being subtracted must be 15. Therefore, our final answer is $X^2 - X - 210 = \boxed{(X + 14)(X - 15)}$.
+\end{solution}
+
+
+\subsection{Factoring quadratics whose leading coefficient is not 1}
 
 
 \subsection{Finding roots by factoring}
 
 One way that quadratic expressions arise is as a product of two linear expressions,
-\begin{equation*}
-(X - 2)(X + 3) = X(X + 3) - 2(X + 3) = X^2 + 3X - 2X - 6 = X^2 + X - 6. 
-\end{equation*}
+
 For a given quadratic, if we can find linear factors, identifying roots becomes straightforward.
 
 \begin{example}
