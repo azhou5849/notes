@@ -1,0 +1,164 @@
+\documentclass{article}
+\usepackage{mathtools,amssymb,amsthm,enumitem,tikz}
+\usepackage[letterpaper]{geometry}
+
+\setlength{\parskip}{3pt plus 1pt minus 1pt}
+\setlength{\parindent}{0pt}
+
+
+\title{MA582 Midterm}
+\author{Alan Zhou}
+\date{2025-03-06}
+
+
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Problem 1}
+Suppose $X$ has mgf $M(t) = (1 - 2t)^{-3/2}$ for $t$ near $0$.
+\begin{enumerate}[label=(\alph*)]
+\item Compute $m_3$.
+\item Identify the distribution of $X$ and justify your method.
+\end{enumerate}
+
+\begin{proof}[Solution.] 
+\begin{enumerate}[label=(\alph*)]
+\item We compute
+\begin{align*}
+M'(t) &= -2\cdot\frac{-3}{2}\cdot (1 - 2t)^{-5/2} = 3(1 - 2t)^{-5/2}, \\
+M''(t) &= 3\cdot -2\cdot\frac{-5}{2}\cdot (1 - 2t)^{-7/2} = 15(1 - 2t)^{-7/2}, \\
+M'''(t) &= 15\cdot -2\cdot\frac{-7}{2}\cdot (1 - 2t)^{-9/2} = 105(1 - 2t)^{-9/2}.
+\end{align*}
+Then, $m_3 = M'''(0) = \boxed{105}$.
+\item In class, we saw that a $\chi^2$ distribution with $r$ degrees of freedom has mgf equal to $(1 - 2t)^{-r/2}$ for $t < 1/2$. Our given mgf matches that of a $\chi^2$ distribution with $3$ degrees of freedom, so in fact, by mgf uniqueness, $X\sim\boxed{\chi_3^2}$.
+\end{enumerate}
+\end{proof}
+
+
+\newpage
+\section*{Problem 2}
+Suppose in the Zev family $\{Z(\theta):\theta\text{ real}\}$, it so happens that when $X\sim Z(\theta)$, we have $\theta = E(3X^5)$. Devise an estimator for $\theta$ and prove that it is UC for $\theta$.
+
+\begin{proof}[Solution.]
+Let $Y = 3X^5$ and let $Y_i = 3X_i^5$ for each $i$, so that $E(Y) = E(Y_i) = \theta$ for all $i$. We consider the estimator
+\begin{equation*}
+\hat{\theta}_n = \frac{Y_1 + \cdots + Y_n}{n} = \boxed{\frac{3X_1^5 + \cdots + 3X_n^5}{n}}.
+\end{equation*}
+It is unbiased for $\theta$ because
+\begin{equation*}
+E(\hat{\theta}_n) = \frac{1}{n}\sum_{i = 1}^n E(Y_i) = \frac{1}{n}\sum_{i = 1}^n\theta = \theta.
+\end{equation*}
+It is consistent for $\theta$ because the weak law of large numbers gives us
+\begin{equation*}
+\hat{\theta}_n = \frac{Y_1 + \cdots + Y_n}{n}\stackrel{p}{\longrightarrow} E(Y) = \theta.
+\end{equation*}
+\end{proof}
+
+
+\section*{Problem 3}
+Suppose $f_{\theta}(x) = 2x/\theta^2$ for $0 < x < \theta$, where $\theta > 0$. Using, as your estimator for $\theta$, the sample maximum (call that $Y_n$ here), prove it is consistent for $\theta$.
+
+\begin{proof}[Solution]
+If $X$ has this distribution, then the cdf of $X$ satisfies $F_X(x) = 0$ for $x < 0$ and $F_X(x) = 1$ for $x\geq\theta$. In between, we calculate
+\begin{equation*}
+F_X(x) = \int_0^x\frac{2t}{\theta^2}\,dt = \frac{x^2}{\theta^2}.
+\end{equation*}
+Then, as discussed in class, when $Y_n = \max(X_1, \ldots, X_n)$ we have
+\begin{equation*}
+F_{Y_n}(y) = (F_X(y))^n = \begin{cases} 0 & y < 0, \\ (y/\theta)^{2n} & 0\leq y < \theta, \\ 1 & y\geq\theta. \end{cases}
+\end{equation*}
+To see that $Y_n$ is consistent for $\theta$, it suffices to show for any $0 < \epsilon < \theta$ that
+\begin{equation*}
+\lim_{n\to\infty} P(\lvert Y_n - \theta\rvert\geq\epsilon) = 0.
+\end{equation*}
+Since $Y_n\leq\theta$ always holds, 
+\begin{equation*}
+P(\lvert Y_n - \theta\rvert\geq\epsilon) = P(Y_n\leq\theta - \epsilon) = \left(\frac{\theta - \epsilon}{\theta}\right)^{2n} = \left(1 - \frac{\epsilon}{\theta}\right)^{2n}.
+\end{equation*}
+As $n\to\infty$, the right hand side tends to $0$ as desired.
+\end{proof}
+
+
+\newpage
+\section*{Problem 4}
+In \#3, show your estimator is biased and show how to correct for the bias, then show your new corrected estimator is also consistent for $\theta$. (Call your corrected estimator $T_n$.)
+
+\begin{proof}[Solution]
+The pdf of $Y_n$ is
+\begin{equation*}
+f_{Y_n}(y) = F_{Y_n}'(y) = \begin{cases} \frac{2n}{\theta^{2n}}\cdot y^{2n - 1} & 0 < y < \theta, \\ 0 \text{ otherwise}. \end{cases}
+\end{equation*}
+The expected value of $Y_n$ is then
+\begin{align*}
+E(Y_n) &= \int_{-\infty}^{\infty} y\cdot f_{Y_n}(y)\,dy = \int_0^{\theta} \frac{2n}{\theta^{2n}} y^{2n}\,dy \\
+&= \frac{2n}{\theta^{2n}}\cdot\frac{\theta^{2n + 1}}{2n + 1} = \frac{2n}{2n + 1}\cdot\theta.
+\end{align*}
+In particular, this is not $\theta$ itself, so $Y_n$ is a biased estimator for $\theta$. If we define $\boxed{T_n = \frac{2n + 1}{2n}Y_n}$,
+\begin{equation*}
+E(T_n) = \frac{2n + 1}{2n}E(Y_n) = \frac{2n + 1}{2n}\cdot\frac{2n}{2n + 1}\cdot\theta = \theta,
+\end{equation*}
+so $T_n$ is an unbiased estimator for $\theta$. Also, since $\frac{2n + 1}{2n}\to 1$ and $Y_n\stackrel{p}{\to}\theta$ as $n\to\infty$, one of our ``preservation of convergence in probability'' results gives us
+\begin{equation*}
+T_n = \frac{2n + 1}{2n}Y_n\stackrel{p}{\longrightarrow} 1\cdot\theta = \theta.
+\end{equation*}
+Thus $T_n$ is consistent for $\theta$ as well.
+\end{proof}
+
+
+\section*{Problem 5}
+In \#3, find the asymptotic distribution of $n(\theta - Y_n)$.
+
+\begin{proof}[Solution]
+When $t < 0$, we have $P(n(\theta - Y_n)\leq t) = 0$. Otherwise, for all $n$ sufficiently large ($n\theta > t$),
+\begin{align*}
+P(n(\theta - Y_n)\leq t) &= P\left(Y_n\geq\theta - \frac{t}{n}\right) = 1 - P\left(Y_n\leq\theta - \frac{t}{n}\right) \\
+&= 1 - \left(\frac{\theta - t/n}{\theta}\right)^{2n} = 1 - \left(1 - \frac{t/\theta}{n}\right)^{2n}.
+\end{align*}
+As $n\to\infty$, this tends to $1 - e^{-2t/\theta}$, so the asymptotic distribution of $n(\theta - Y_n)$ has cdf
+\begin{equation*}
+t\longmapsto \begin{cases} 0 & t < 0, \\ 1 - e^{-2t/\theta} & t\geq 0. \end{cases}
+\end{equation*}
+This is the $\boxed{\operatorname{Exp}(2/\theta)}$ distribution.
+\end{proof}
+
+
+\newpage
+\section*{Problem 6}
+In \#3, find the asymptotic distribution of $n(\theta - T_n)$.
+
+\begin{proof}[Solution]
+We start by writing
+\begin{equation*}
+n(\theta - T_n) = n(\theta - Y_n) + n(Y_n - T_n) = n(\theta - Y_n) - \frac{1}{2}Y_n.
+\end{equation*}
+Since $n(\theta - Y_n)\stackrel{\mathcal{D}}{\to}\operatorname{Exp}(2/\theta)$ and $Y_n\stackrel{p}{\to}\theta$, Slutsky's lemma tells us that
+\begin{equation*}
+n(\theta - T_n)\stackrel{\mathcal{D}}{\longrightarrow}\boxed{\operatorname{Exp}\left(\frac{2}{\theta}\right) - \frac{\theta}{2}},
+\end{equation*}
+the $\operatorname{Exp}(2/\theta)$ distribution shifted a constant amount $\theta/2$ to the left. That is, if $E_n = n(\theta - T_n)$ is the magnified error and $F_n$ is its cdf, then
+\begin{equation*}
+F_n(t)\approx\begin{cases} 0 & t < -\theta/2, \\ 1 - e^{-2(t + \theta/2)/\theta} & t\geq -\theta/2. \end{cases}
+\end{equation*}
+\end{proof}
+
+
+\section*{Problem 7}
+Compute the third moment of $X = 3Z + 2$ explicitly.
+
+\begin{proof}[Solution]
+For the standard normal, $E(Z) = E(Z^3) = 0$ by symmetry while
+\begin{equation*}
+E(Z^2) = \operatorname{Var}(Z) + E(Z)^2 = 1 + 0 = 1.
+\end{equation*}
+Then, the third moment of $X$ is
+\begin{align*}
+E(X^3) &= E((3Z + 2)^3) = E(27Z^3 + 54Z^2 + 36Z + 8) \\
+&= 27E(Z^3) + 54E(Z^2) + 36E(Z) + 8 = 54 + 8 = \boxed{62}.
+\end{align*}
+\end{proof}
+
+
+\end{document}
