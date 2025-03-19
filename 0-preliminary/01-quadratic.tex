@@ -2,13 +2,13 @@
 
 A \emph{quadratic (polynomial) in $X$} is an expression of the form $aX^2 + bX + c$, where $a,b,c$ are independent of $X$ and $a\neq 0$. Collectively $a,b,c$ are the \emph{coefficients} of the quadratic while $aX^2, bX, c$ are the \emph{terms} of the quadratic.
 
-\subsection{Factoring quadratics}
+\subsection{Factoring quadratics whose leading coefficient is 1}
 
 Some quadratics arise as a product of two linear expressions, such as
 \begin{equation*}
 (X - 2)(X + 3) = X(X + 3) - 2(X + 3) = X^2 + 3X - 2X - 6 = X^2 + X - 6. 
 \end{equation*}
-\emph{Factoring} refers to the reverse process of finding, for a given quadratic, two linear expressions which multiply to that quadratic. Here we focus on factoring \emph{over the integers}, where we look for linear expressions with integer coefficients who multiply to a given quadratic with integer coefficients.
+\emph{Factoring} refers to the reverse process of finding, for a given quadratic, two linear expressions which multiply to that quadratic. Here we focus on factoring \underline{over the integers}.
 
 \begin{example}
 Factor $X^2 + 8X + 12$.
@@ -25,42 +25,44 @@ Matching coefficients, we want $A + B = 8$ and $AB = 12$. Listing out pairs of i
 Factor $X^2 - 10X + 21$.
 \end{example}
 \begin{solution}
-Setting up a factorization $(X + A)(X + B)$ as before, this time we need $A + B = -10$ and $AB = 21$. Since $AB$ is positive, we know that $A$ and $B$ have the same sign, and since $A + B$ is negative, we know that in fact, both $A$ and $B$ are negative. To make guess-and-check easier, let $A = -C$ and $B = -D$, where now $C$ and $D$ are \underline{positive} integers. Then $C + D = 10$ and $CD = 21$, and testing values, we find that 3 and 7 do the job. This means that $A$ and $B$ are $-3$ and $-7$ in some order, so $X^2 - 10X + 21 = \boxed{(X - 3)(X - 7)}$.
+Setting up a factorization $(X + A)(X + B)$ as before, this time $A + B = -10$ and $AB = 21$. We find $A$ and $B$ are $-3$ and $-7$ in some order, so $X^2 - 10X + 21 = \boxed{(X - 3)(X - 7)}$.
 \end{solution}
+
+To make guess-and-check easier, we can start with some sign analysis. This allows us to narrow our search to \underline{positive} integers instead of all integers.
 
 \begin{example}
 Factor $X^2 - 19X + 48$.
 \end{example}
 \begin{solution}
-This time, we start with the sign analysis. Since the constant term $48$ is positive, we know that the constants of the factors have the same sign. Since the linear coefficient $-19$ is negative, those constants have to be negative. Therefore, we can set up a factorization of the form
+Since the constant term $48$ is positive, we know that the constants of the factors are both positive or both negative. Since the linear coefficient $-19$ is negative, those constants have to be negative. Therefore, we can set up a factorization of the form
 \begin{equation*}
 (X - A)(X - B) = X^2 - (A + B)X + AB.
 \end{equation*}
-Matching coefficients, we need two positive integers whose sum is 19 and whose product is 48. These turn out to be 3 and 16, so $X^2 - 19X + 48 = \boxed{(X - 3)(X - 16)}$.
+We need two positive integers whose sum is 19 and whose product is 48. These turn out to be 3 and 16, so $X^2 - 19X + 48 = \boxed{(X - 3)(X - 16)}$.
 \end{solution}
 
 \begin{example}
 Factor $X^2 + 7X - 44$.
 \end{example}
 \begin{solution}
-Since the constant term $-44$ is negative, the constants of the factors have opposite sign. Therefore, we can set up a factorization of the form
+Since the constant term $-44$ is negative, we can set up a factorization of the form
 \begin{equation*}
 (X + A)(X - B) = X^2 + (A - B)X - AB.
 \end{equation*}
-Matching coefficients, we need two positive integers whose product is 44 and whose difference is 7. These turn out to be 4 and 11. As $A - B = 7$, we specifically require $A = 11$ and $B = 4$, so then our final answer is $X^2 + 7X - 44 = \boxed{(X + 11)(X - 4)}$.
-\end{solution}
-
-\begin{example}
-Factor $X^2 - X - 210$.
-\end{example}
-\begin{solution}
-Since the constant term is negative, we are looking for positive integers whose difference is 1 and whose product is 210. These turn out to be 14 and 15. As the linear coefficient is negative, the integer being added must be 14 while the integer being subtracted must be 15. Therefore, our final answer is $X^2 - X - 210 = \boxed{(X + 14)(X - 15)}$.
+We need two positive integers whose product is 44 and whose difference is 7. These turn out to be 4 and 11. As $A - B = 7$, we require $A = 11$ and $B = 4$, so $X^2 + 7X - 44 = \boxed{(X + 11)(X - 4)}$.
 \end{solution}
 
 
 \subsection{Factoring quadratics whose leading coefficient is not 1}
 
 So far, all of the examples we considered are \emph{monic}, meaning the leading coefficient (coefficient of $X^2$) is 1. When the leading coefficient is not 1, the task becomes more challenging.
+
+\begin{example}
+Factor $3X^2 + 10X + 8$.
+\end{example}
+\begin{proof}
+
+\end{proof}
 
 
 \subsection{Finding roots by factoring}
