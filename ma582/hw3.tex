@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{mathtools,amssymb,amsthm,enumitem,tikz}
+\usepackage[letterpaper]{geometry}
+
+\setlength{\parskip}{3pt plus 1pt minus 1pt}
+\setlength{\parindent}{0pt}
+
+
+\title{MA582 Homework 3}
+\author{Alan Zhou}
+\date{Due 2025-03-30}
+
+
+
+\begin{document}
+
+\maketitle
+
+
+\section{Problem 1}
+
+Suppose for the family $\mathcal{F} = \{f_{\theta} : \theta\in\Theta\}$ we have a CAN estimator $\hat{\theta}_n$ with an ANV of $v(\theta) > 0$ which is continuous with respect to $\theta$.
+
+Derive a confidence interval formula for $CI(\theta)$ similar to the $CI(\mu)$ derived in recent lectures. It should be data-ready, since of course $\theta$ is unknown so $v(\theta)$ is also unknown and must also be estimated suitably.
+
+\begin{proof}[Solution]
+Asymptotic normality says that $\sqrt{n}(\hat{\theta}_n - \theta)\stackrel{\mathcal{D}}{\longrightarrow} N(0, v(\theta))$, so rescaling,
+\begin{equation*}
+\frac{\hat{\theta}_n - \theta}{\sqrt{v(\theta)/n}}\stackrel{\mathcal{D}}{\longrightarrow} Z\sim N(0,1).
+\end{equation*}
+Consistency says that $\hat{\theta}_n\stackrel{p}{\to}\theta$, so with $v$ and the square root function continuous, our results on properties of convergence in probability give us
+\begin{equation*}
+\frac{\sqrt{v(\theta)}}{\sqrt{v(\hat{\theta}_n)}}\stackrel{p}{\longrightarrow} 1.
+\end{equation*}
+We can now apply Slutsky's lemma to say that
+\begin{equation*}
+\frac{\hat{\theta}_n - \theta}{\sqrt{v(\hat{\theta}_n)/n}}\stackrel{\mathcal{D}}{\longrightarrow} = \frac{\sqrt{v(\theta)}}{\sqrt{v(\hat{\theta}_n)}}\cdot\frac{\hat{\theta}_n - \theta}{\sqrt{v(\theta)/n}}\stackrel{\mathcal{D}}{\longrightarrow} 1\cdot Z = Z\sim N(0,1).
+\end{equation*}
+Following our derivation for $CI(\mu)$ in class, we let $\alpha$ be the desired significance level. Then with $z_{\alpha/2} = \Phi^{-1}(1 - \alpha/2)$, where $\Phi$ is the cdf of $Z$, we have
+\begin{equation*}
+1 - \alpha = P(-z_{\alpha/2}\leq Z\leq z_{\alpha/2})\approx P\left(-z_{\alpha/2}\leq\frac{\hat{\theta}_n - \theta}{\sqrt{v(\hat{\theta}_n)/n}}\leq z_{\alpha/2}\right)
+\end{equation*}
+for sufficiently large $n$. Rearranging to get upper and lower bounds on $\theta$,
+\begin{equation*}
+\hat{\theta}_n - z_{\alpha/2}\sqrt{\frac{v(\hat{\theta}_n)}{n}}\leq\theta\leq\hat{\theta}_n + z_{\alpha/2}\sqrt{\frac{v(\hat{\theta}_n)}{n}}.
+\end{equation*}
+\end{proof}
+
+\newpage
+\section{Problem 2}
+
+Suppose in the geometric family with parameter $p$, a sample of size 100 has an average of $7.22$. Using your results in Problem 1, construct a 95\% CI for $p$.
+
+\begin{proof}[Solution]
+The mean and variance of a geometric random variable with parameter $p$ are $1/p$ and $(1 - p)/p^2$, respectively. Therefore, if we set $\theta = 1/p$, the central limit theorem tells us that the sample mean $\hat{X}_n$ is a CAN estimator $\hat{\theta}_n$ for $\theta$ with ANV $v(\theta) = \theta^2 - \theta$, which is continuous. Part (a) gives us the 95\% confidence interval ($\alpha = 0.05$)
+\begin{equation*}
+\hat{\theta}_n - z_{\alpha/2}\sqrt{\frac{v(\hat{\theta}_n)}{n}}\leq\theta\leq\hat{\theta}_n + z_{\alpha/2}\sqrt{\frac{v(\hat{\theta}_n)}{n}},
+\end{equation*}
+and when we substitute the values
+\begin{equation*}
+n = 100,\quad\hat{\theta}_n = 7.22,\quad z_{\alpha/2}\approx 1.96,
+\end{equation*}
+we get the confidence interval $5.91\lesssim\theta\lesssim 8.53$, corresponding to
+\begin{equation*}
+0.117\lesssim p\lesssim 0.169.
+\end{equation*}
+\end{proof}
+
+
+
+\end{document}
