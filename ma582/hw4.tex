@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{mathtools,amssymb,amsthm,enumitem,tikz}
+\usepackage[letterpaper]{geometry}
+
+\setlength{\parskip}{3pt plus 1pt minus 1pt}
+\setlength{\parindent}{0pt}
+
+\renewcommand{\bar}[1]{\overline{#1}}
+\DeclareMathOperator{\Exp}{Exp}
+
+\title{MA582 Homework 4}
+\author{Alan Zhou}
+\date{Due 2025-04-13}
+
+
+
+\begin{document}
+
+\maketitle
+
+
+\section{Problems 1-2}
+
+Suppose for the family $\mathcal{F} = \{f_{\theta}:\theta\in\Theta\}$ we have a CAN estimator $\hat{\theta}_n$ with an ANV of $v(\theta)$ which is continuous with respect to $\theta$.
+
+\begin{enumerate}
+\item Show step-by-step how to find a reparameterization function $g:\Theta\to\mathbb{R}$ such that the new ANV for the new estimator of the new parameter is completely parameter-free.
+\item Show how, for your new parameter/estimator's CI, the margin of error is quite simplified.
+\end{enumerate}
+
+\begin{proof}[Solution]
+\begin{enumerate}
+\item By the reparameterization lemma ($\Delta$ method), if $g:\Theta\to\mathbb{R}$ is 1-1 and differentiable, $\hat{\delta}_n = g(\hat{\theta}_n)$ is a CAN estimator of $\delta = g(\theta)$ with ANV $v(\theta)\cdot g'(\theta)^2$. Without loss of generality, we can aim for this to be constantly 1, which is achieved if $g'(\theta) = v(\theta)^{-1/2}$ for all $\theta$. Therefore, we can take as a candidate reparameterization function any of the antiderivatives specified by
+\begin{equation*}
+g(\theta) = \int v(\theta)^{-1/2}\,d\theta.
+\end{equation*}
+To see that any such $g$ meets the hypotheses of the reparameterization lemma, observe that $v$ being continuous tells us that $g$ is differentiable by the fundamental theorem of calculus, and $v > 0$ tells us that $g$ is a strictly increasing function, hence 1-1.
+\item From homework 3, since $\hat{\delta}_n$ is a CAN estimator for $\delta$ with ANV 1, our CI for $\delta$ is
+\begin{equation*}
+\hat{\delta}_n - \frac{z_{\alpha/2}}{\sqrt{n}}\leq\delta\leq\hat{\delta}_n + \frac{z_{\alpha/2}}{\sqrt{n}}.
+\end{equation*}
+\end{enumerate}
+\end{proof}
+
+
+%\newpage
+\section{Problem 3}
+
+For $\Exp(\lambda)$, where $\lambda > 0$, we found a CAN estimator in lectures. Apply variance stabilization.
+
+\begin{proof}[Solution]
+The CAN estimator we found in lectures is $\hat{\lambda}_n = 1/\bar{X_n}$ with ANV $v(\lambda) = \lambda^2$, so we let
+\begin{equation*}
+g(\lambda) = \int v(\lambda)^{-1/2}\,d\lambda = \int d\lambda/\lambda = \log\lambda.
+\end{equation*}
+That is, $\log(\hat{\lambda}_n) = -\log\bar{X_n}$ is a CAN estimator for $\log\lambda = -\log(\text{mean})$ with constant ANV 1.
+\end{proof}
+
+
+\end{document}
