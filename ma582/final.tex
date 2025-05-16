@@ -1,0 +1,141 @@
+\documentclass{article}
+\usepackage{mathtools,amssymb,amsthm,enumitem,tikz}
+\usepackage[letterpaper]{geometry}
+
+\setlength{\parskip}{3pt plus 1pt minus 1pt}
+\setlength{\parindent}{0pt}
+
+
+\title{MA582 Final}
+\author{Alan Zhou}
+\date{2025-05-08}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Problem 1}
+Consider the family of pdfs $f(x,\theta) = 4x^3/\theta^4$ for $0 < x < \theta$.
+\begin{enumerate}[label=(\alph*)]
+\item Find a sufficient statistic $Y$ for $\theta$.
+\item Show that $Y$ is complete for $\theta$.
+\item Compute $E(Y)$.
+\item Use (c) to find and justify an MVUE for $\theta$.
+\item Find the MLE for $\theta^2$. (Just the answer, no need for derivation here!)
+\end{enumerate}
+
+\begin{proof}[Solution.] 
+\begin{enumerate}[label=(\alph*)]
+\item We compute the likelihood function
+\begin{equation*}
+L(\vec{x},\theta) = \prod_{i = 1}^n f(x_i,\theta) = \prod_{i = 1}^n \frac{4x_i^3\vec{1}_{0 < x_i < \theta}}{\theta^4} = \frac{4^n}{\theta^{4n}}\left(\prod_{i = 1}^n x_i^3\right)\vec{1}_{0 < x_1, \ldots, x_n < \theta}.
+\end{equation*}
+This factors as $L(\vec{x},\theta) = \alpha(y,\theta)\cdot\beta(\vec{x})$, where $y = \max(x_1, \ldots, x_n)$, as
+\begin{equation*}
+\alpha(y,\theta) = \frac{\vec{1}_{0 < y < \theta}}{\theta^{4n}},\qquad\beta(\vec{x}) = 4^n\prod_i x_i^3.
+\end{equation*}
+By Neymann's factorization lemma, $Y = \max(X_1, \ldots, X_n)$ is sufficient for $\theta$.
+\item Suppose $E_{\theta}(\delta(Y)) = 0$ for all $\theta$. We compute
+\begin{equation*}
+E_{\theta}(\delta(Y)) = \int L(\vec{x},\theta)\delta(y)\,d\vec{x} = \frac{4^n}{\theta^{4n}}\int_{\vec{0}}^{\theta\vec{1}} x_1^3\cdots x_n^3\delta(\max(x_1\cdots x_n))\,d\vec{x}.
+\end{equation*}
+By symmetry, we can just consider the integral in the case that $y = x_n$ and write
+\begin{align*}
+E_{\theta}(\delta(Y)) &= \frac{4^n\cdot n}{\theta^{4n}}\int_0^{\theta}\left(\int_{(0,\ldots,0)}^{(y,\ldots,y)} x_1^3\cdots x_{n - 1}^3\,dx_1\,\ldots\,dx_n\right)y^3\delta(y)\,dy \\
+&= \frac{4n}{\theta^{4n}}\int_0^{\theta} y^{4n - 1}\delta(y)\,dy.
+\end{align*}
+This means
+\begin{equation*}
+D(\theta) = \int_0^{\theta} y^{4n - 1}\delta(y)\,dy = 0
+\end{equation*}
+for all $\theta$. Assuming $\delta$ continuous, we can invoke the fundamental theorem of calculus to say that $D'(\theta) = \theta^{4n - 1}\delta(\theta) = 0$, so then $\delta(\theta) = 0$ everywhere. (I believe as long as $E_{\theta}(\delta(Y))$ exists this should still hold as an almost-surely statement.) Thus $Y$ is consistent for $\theta$.
+\item Borrowing the previous calculation with $\delta(Y) = Y$,
+\begin{equation*}
+E_{\theta}(Y) = \frac{4n}{\theta^{4n}}\int_0^{\theta} y^{4n}\,dy = \frac{4n}{4n + 1}\cdot\theta.
+\end{equation*}
+\item Let $Z = \frac{4n + 1}{4n}\cdot Y$. Then $E(Z) = \theta$, so $Z$ is unbiased for $\theta$. Since $Y$ is sufficient and complete for $\theta$, by the Lehmann-Scheffe theorem, $E(Z\mid Y) = Z$ is an MVUE for $\theta$.
+\item $MLE(\theta^2) = Y^2$.
+\end{enumerate}
+\end{proof}
+
+
+\newpage
+\section*{Problem 2}
+Suppose $X\sim N(0,\theta)$, where $\operatorname{var}(X) = \theta > 0$.
+\begin{enumerate}
+\item Find Fisher's information $I(\theta)$.
+\item Find $MLE(\theta)$.
+\item Show that your MLE is CAN for $\theta$ and specify the ANV explicitly.
+\end{enumerate}
+
+\begin{proof}[Solution.]
+\begin{enumerate}
+\item With
+\begin{equation*}
+f(x,\theta) = \frac{1}{\sqrt{2\pi\theta}}e^{-x^2/2\theta},
+\end{equation*}
+we have
+\begin{equation*}
+\log f(\vec{x},\theta) = -\frac{n}{2}\log(2\pi) - \frac{n}{2}\log\theta - \sum_{i = 1}^n\frac{x_i^2}{2\theta}.
+\end{equation*}
+Therefore,
+\begin{equation*}
+I(\theta) = -E\left(\frac{\partial^2}{\partial\theta^2}\log f(\vec{X},\theta)\right) = -E\left(\frac{n}{2\theta^2} - \sum_{i = 1}^n\frac{X_i^2}{\theta^3}\right) = -\frac{n}{2\theta^2} + \frac{\sum_i E(X_i^2)}{\theta^3}.
+\end{equation*}
+Since $E(X^2) = E(X)^2 + \operatorname{var}(X) = \theta$, we find $I(\theta) = n/2\theta^2$.
+\item For $n$ trials, the log likelihood is maximized when
+\begin{equation*}
+\frac{\partial}{\partial\theta}\left[\sum_{i = 1}^n\log f(x_i,\theta)\right] = -\frac{n}{2\theta} + \frac{\sum_i x_i^2}{2\theta^2} = \frac{\sum_i x_i^2 - n\theta}{2\theta^2} = 0.
+\end{equation*}
+Thus $MLE(\theta) = \frac{1}{n}\sum_i x_i^2$.
+\item The normal distribution meets all regularity conditions discussed, so by the theorem from class with the very long initialism name, $MLE(\theta)$ is CAN for $\theta$ with ANV $n/I(\theta) = 2\theta^2$.
+\end{enumerate}
+\end{proof}
+
+
+\newpage
+\section*{Problem 3}
+Let $X\sim\operatorname{Exp}(\lambda)$, where $\lambda > 0$ and $E(X) = 1/\lambda$.
+\begin{enumerate}
+\item Find $MLE(\lambda)$.
+\item Find Fisher's information $I(\lambda)$.
+\item Show that your MLE is CAN for $\lambda$.
+\item Find the ANV for your MLE.
+\item Show that your MLE is biased for $\lambda$.
+\item Find $MLE(\lambda^2)$.
+\end{enumerate}
+
+\begin{proof}[Solution]
+\begin{enumerate}
+\item We are taking the pdf of an individual $X$ to be $f(x,\lambda) = \lambda e^{-\lambda x}$, so then
+\begin{equation*}
+\log f(\vec{x},\lambda) = n\log\lambda - \lambda\sum_{i = 1}^n x_i.
+\end{equation*}
+Differentiating with respect to $\lambda$, the equation $n/\lambda - \sum_i x_i = 0$ gives $MLE(\lambda) = n/\sum_i x_i$.
+\item The Fisher's information $I(\lambda)$ is
+\begin{equation*}
+I(\lambda) = -E\left(\frac{\partial^2}{\partial\lambda^2}\log f(\vec{X},\lambda)\right) = \frac{n}{\lambda^2}.
+\end{equation*}
+\item The exponential distribution meets all regularity conditions discussed, so by the theorem from class with the very long initialism name, $MLE(\lambda)$ is CAN for $\lambda$.
+\item By the same theorem, the ANV is $n/I(\theta) = \lambda^2$.
+\item Since $x\mapsto 1/x$ is strictly convex on $(0,\infty)$, Jensen's inequality tells us that since $\sum_i x_i/n$ has expectation $E(X) = 1/\lambda$, the expectation of $MLE(\lambda) = n/\sum_i x_i$ is strictly less than $\lambda$, in particular unequal to $\lambda$.
+\item Writing $\ell = \lambda^2$, our log likelihood is $(n/2)\log\ell - \ell^{1/2}\sum_{i = 1}^n$, and differentiating gives us $(n/2\ell) - 1/2\sqrt{\ell}\sum_i x_i = 0$. This means $n - \sqrt{\ell}\sum_i x_i = 0$, so then $MLE(\lambda^2) = (n/\sum_i x_i)^2$.
+\end{enumerate}
+\end{proof}
+
+
+\newpage
+\section*{Problem 4}
+Name a parametric family whose parameter has its MLE being the sample median.
+
+\begin{proof}[Solution]
+
+\end{proof}
+
+
+\end{document}
