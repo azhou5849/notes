@@ -9,30 +9,28 @@
 
 \begin{document}
 
-\section*{Combinations}
+\section*{Casework}
 
-\textbf{Definition:} For non-negative integers $n$ and $k$ with $0\leq k\leq n$,
-\begin{equation*}
-\binom{n}{k} = C(n,k) = {}_nC_k = \frac{n(n - 1)(n - 2)\cdots (n - k + 1)}{k!} = \frac{n!}{k!(n - k)!}
-\end{equation*}
-is the number of ways to select, from $n$ distinct objects, an (unordered) collection of $k$ of them.
 \begin{enumerate}
-\item \begin{enumerate}
-\item How many distinct line segments can be drawn that connect two vertices of a regular octagon? Include the sides of the octagon in your count.\vspace{1cm}
-\item A \emph{diagonal} of a convex polygon is a segment connecting two non-adjacent vertices of the polygon. How many diagonals does a regular octagon have?
-\end{enumerate}\vspace{1cm}
-\item Maraya is going to buy six cookies at the bakery. She will choose from sugar, ginger, chocolate, and peanut butter cookies. How many different assortments of cookies can she buy if she will buy at least one of each of the four kinds of cookies?\vspace{1cm}
-\item An ant needs to crawl from $A$ to $B$ along the gridlines in a path that is as short as possible. How many such paths are available?
+\item (2005 State Sprint \#8) At a mall's food court, Crystal has \$7.50 to buy a meal (one entree, one drink, and one dessert). The table below lists Crystal's choices and their prices including sales tax. How many distinct possible meals can she afford to buy?
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|} \hline 
+Entrees & Drinks & Desserts \\ \hline 
+Pizza \$3.50 & Lemonade \$1.50 & Frozen Yogurt \$3.00 \\ \hline
+Corn Dog \$2.50 & Soda \$1.25 & Cookies \$2.00 \\ \hline 
+Fish \& Chips \$3.50 & & \\ \hline
+Fried Rice \$4.75 & & \\ \hline
+\end{tabular}
+\end{table}
+\item (2010 Chapter Team) In the geoboard shown, the points are evenly spaced vertically and horizontally. Segment $\overline{AB}$ is drawn using two points, as shown. Point $C$ is to be chosen from the remaining 23 points. How many of these 23 points will result in triangle $ABC$ being isosceles?
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.5]{grid.png}
+\includegraphics[scale=0.5]{geoboard.png}
 \end{figure}
-\item There are 7 dots on a circle and each pair of distinct dots is joined by a line segment.
-\begin{enumerate}
-\item How many line segments are there connecting any 2 of these 7 dots?\vspace{1cm}
-\item ($\star$) What is the maximum possible number of intersection points inside the circle that can be formed by these line segments?\vspace{1cm}
-\item ($\star$) What is the maximum possible number of regions inside the circle that can be formed by these line segments?
-\end{enumerate}
+\item How many different values strictly between $1/2$ and 1 are obtained by computing $P/Q$ for whole numbers $P$ and $Q$ strictly between 0 and 10?\vspace{2cm}
+\item (2006 National Sprint \#21) On the refrigerator, \texttt{MATHCOUNTS} is spelled out with 10 magnets, one letter per magnet. Two vowels and three consonants fall off and are put away in a bag. If the \texttt{T}s are indistinguishable, how many distinct possible collections of letters could be put in the bag?\vspace{2cm}
+\item Joseph, Pedro, Samuel, and David leaves their backpacks by the classroom door. When the fire alarm rings they rush to leave, each randomly grabbing a backpack on the way out. In how many ways can the bags be taken such that each boy takes a backpack that is not his own?
 \end{enumerate} 
 
 
@@ -52,35 +50,42 @@ is the number of ways to select, from $n$ distinct objects, an (unordered) colle
 \section*{Extensions}
 \vspace{1cm}
 \begin{enumerate}
-\item \underline{\hspace{3in}}\vspace{1cm}
-\item \underline{\hspace{3in}} (2012 School Team)\vspace{1cm}
-\item \underline{\hspace{3in}} (2012 National Sprint Problem 25)\vspace{1cm}
-\item \underline{\hspace{3in}}\vspace{1cm}
-\item \underline{\hspace{3in}} (2010 Chapter Team)\vspace{1cm}
-\item \underline{\hspace{3in}} (2012 State Sprint Problem 27)\vspace{1cm}
-\item \underline{\hspace{3in}}\vspace{1cm}
-\item \underline{\hspace{3in}}
+\item \underline{\hspace{3in}} (2011 State Countdown)\vspace{1cm}
+\item \underline{\hspace{3in}} [treat $0^0$ as undefined]\vspace{1cm}
+\item \underline{\hspace{3in}} (1996 School Team)\vspace{1cm}
+\item \underline{\hspace{3in}} (2012 National Sprint \#10)\vspace{1cm}
+\item \underline{\hspace{3in}} (2014 State Sprint \#18)\vspace{1cm}
+\item \underline{\hspace{3in}} (2012 State Sprint \#29)\vspace{1cm}
+\item \underline{\hspace{3in}} (2006 National Team)
 \end{enumerate}
 
 
 \newpage
 
-\section*{Extra Problems}
+\section*{Extra Problems ($\star$)}
 
 \begin{enumerate}
-\item Solve the following system of equations:
+\item Given that $a,b,c$ are real numbers satisfying
 \begin{align*}
-a + b + c + d + e + f &= 4, \\
-32a + 16b + 8c + 4d + 2e + f &= 8, \\
-243a + 81b + 27c + 9d + 3e + f &= 14, \\
-1024a + 256b + 64c + 16d + 4e + f &= 22, \\
-3125a + 625b + 125c + 25d + 5e + f &= 32, \\
-7776a + 1296b + 216c + 36d + 6e + f &= 44.
+a + b + c &= 6, \\
+a^2 + b^2 + c^2 &= 20, \\
+a^3 + b^3 + c^3 &= 78,
 \end{align*}
-Express your answer as an ordered 6-tuple $(a,b,c,d,e,f)$.\vspace{3cm}
-\item ($\star$) For how many ordered pairs of non-negative integers $(n,k)$ does $\dbinom{n}{k} = 3003$?\vspace{3cm}
-\item A pyramid has a square base $ABCD$ of side length 1 and an apex $P$ located directly above point $A$ (relative to the plane of $ABCD$) with $AP = 1$. Find the total surface area of the pyramid, expressing your answer in simplest radical form.\vspace{3cm}
-\item Let $A$ be the number of perfect square divisors of $20!$ and let $B$ be the number of perfect square divisors of $25!$. Compute $B - A$.
+find $a^4 + b^4 + c^4$.
+\vspace{2cm}
+\item Each of the vertices of a cube is independently colored red or blue with equal probability.
+\begin{enumerate}
+\item What is the expected value of the number of faces whose vertices are all the same color?
+\item What is the probability that at least one face has vertices all of the same color?
+\end{enumerate}
+Express your answers as common fractions.
+\vspace{2cm}
+\item The side length of cube $ABCDEFGH$ shown below is 6. In simplest radical form, what is the shortest possible distance between a point on line $\overline{AC}$ and a point on line $\overline{BE}$?
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{cube.png}
+\end{figure}
+\item While 6 is the smallest possible integer area of a right triangle with integer side lengths, there are right triangles with rational side lengths of area 5. What is the smallest possible integer-valued perimeter of such a triangle?
 \end{enumerate}
 
 
